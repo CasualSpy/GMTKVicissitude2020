@@ -167,7 +167,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   centerOffsetCompatibility: NaN
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
@@ -442,12 +442,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+vG3RqjaAIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VMty2jAU/RVG68LYDuHRXesQ0kUeE9rJxhthXWMNsuTRI0Ay/HuvZBu7ZMoG+dyHzjn32p+ES1NDbpVea84eFQPyfUT8mXwb9cEHONKdkhv+AV3OG2e29Ek05LxSyxXisS8zqgKref5D7oRPjhB0khdKVyu2g1QZaxAuqDCAIa2sr5YIfY7IEf/GS19ywlMy96cPPC2j0RmPOUgLuk/tEsfRJJku8TefJW3FeDqZzqOb+XQ1jhah2Mlc0KoG5pX0PeJF2ySOJrchUaLKNgchf60SgpuWJLGnOpiQ0to4lIgJjFMUHZjFE8+gBL4rrZcwLH8uCgO25a3p6Y5rdK/pS36qxtKKmn3D7p0K529KbmeBV9P08Ut8HIdwoVX10N0bR/4OW/J8/0pPOTV24PkQvhtQDyYdqNjTrYC3EuSTWmvlJMOg1c6XOgPJXf94kZaWkO97vKF6Bbr66+S6AXsN56D+mApebYP30wbYCBUcD3sBGqfzCwmHrTFtC0Q9iz8GftPdcL3awD3XxmKoVSk9va1y2qeSVfDMq3E2VVqCHnaoQVJhTy/Yx17P8Cr2/6p76t+k9vY21r0gVyUB7vOj6Cr0og6XaZlSHR7BlM/OCi6ht9oHntCoVEnZrNhQUle2cbqg+aBs5zj7d7cIzWmxjGkBEWy3N4vFOJrOlrObRbJgy2LGWELC8nGJOql4aYi29uDYZN9c4qJ1H5jRWtM6rDvT9LDmH5UyfSaXhdrkGkA+Nx0uxEHjJfhqshXjaNAGrOUyDJx8ZkSofA8suzTKgtLV0Wqa9V0yUvN3ZT2SkTR8UTJyJue/UEsDBBQAAAgIAACYn+uyuvcjbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSYnJimqVhYlqqQWpSkrGFha6BiZmlmbGFkUWKZZpZSoqRUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+vG3RqjaAIAABAFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+uyuvcjbQAAAHgAAAAJACQAAAAAAAAAAAAAALUCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAbQMAAAAA
+    dataString: UEsDBBQAAAgIAACYn+sDr+e2aAIAABEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtzmzAQ/isenWsPEMeP3lriOD3kMXE7uXCR0WI0FhKjR2wn4//elQBDnSkXxLev79td8Um4NDXkVum15uxRMSDfR8SfybdRb3yAI90pueEf0Pm8cWZL70SDzyu1XCEe+zCjKrCa5z/kTnjnCEEneaF0tWI7SJWxBuGCCgNo0sr6aInQ54gc8TVe+pATnpK5P33gaRmNznjMQVrQvWvnOI4myXSJz3yWtBHj6WQ6j27m09U4WoRgJ3NBqxqYV9LniBdtkjia3AZHiSpbH4R8WSUENy1JYk91aEJKa+NQIjowTlF0YBZPPIMS+K60XsIw/LkoDNiWt6anO66xe01e8lM1La2o2Tfs3qlwvlJyOwu8mqSPX+zjOJgLraqHrm4c+Rq25Pn+lZ5yauyg50P4bkA9NOlAxZ5uBbyVIJ/UWisnGRqtdj7UGUju+s+LtLSEfN/jDdUr0NVfJ9cN2Gs4B/XHVPBqG3o/bYCNUKHjYS9A43R+IeGwNaZNgahn8cfAb7obrldruOfaWDS1KqWnt1VOe1eyCj3zapxNlZaghxlqkFTY0wvmsdczvLL9P+qe+pvUVm9t3QW5Cglw7x9FV6YXdbhMy5Tq8AimfHZWcAl9q73hCRuVKimbFRtK6sI2Thc0H4TtHGf/7hahOS2WMS0ggu32ZrEYR9PZcnazSBZsWcwYS0hYPi5RJxUvDdG2PTg22SeXuGjdD2a01rQO6840Paz5R6WGBLks1CbXAPK5SXFhDhqr4N1kK8axQxuwlsswcfKZEaHyPbDsUjMLUldHq2nWZ8lIzd+V9UhG0vBLyciZnP8CUEsDBBQAAAgIAACYn+uyuvcjbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSYnJimqVhYlqqQWpSkrGFha6BiZmlmbGFkUWKZZpZSoqRUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+sDr+e2aAIAABEFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+uyuvcjbQAAAHgAAAAJACQAAAAAAAAAAAAAALUCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAbQMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
     cacheStartup: 0
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 0
   debugFloor: 0
@@ -507,6 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 690081858}
   - component: {fileID: 690081857}
+  - component: {fileID: 690081859}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -578,6 +579,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &690081859
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690081856}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1680857019
 GameObject:
   m_ObjectHideFlags: 0
