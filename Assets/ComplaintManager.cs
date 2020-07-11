@@ -6,12 +6,18 @@ public class ComplaintManager : MonoBehaviour
 {
     public struct Complaint
     {
-        public GuestMain guest;
+        public Plaintiff plaintiff;
         public Reasons reason;
+
+        public Complaint(Plaintiff p, Reasons r)
+        {
+            plaintiff = p;
+            reason = r;
+        }
     }
 
     Dictionary<Reasons, int> complaintValues;
-    public List<Complaint> complaints;
+    List<Complaint> complaints;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +47,7 @@ public class ComplaintManager : MonoBehaviour
     public void AddComplaint(Complaint complaint)
     {
         complaints.Add(complaint);
+        Debug.Log("Complaint added");
     }
 
     public int TotalValue()
