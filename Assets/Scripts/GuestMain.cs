@@ -9,6 +9,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
 {
     private IAstarAI Ai;
 
+    private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
     private int drunkness;
     public const int maxDrunkness = 2;
@@ -21,6 +22,8 @@ public class GuestMain : MonoBehaviour, Plaintiff
     //How likely they are to do stupid stuff
     public float rebelliousness;
     private GuestSpawner spawner;
+
+    private Animator animator;
 
     private bool isGrabbed;
 
@@ -58,6 +61,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
         spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
         spawner.GuestCount++;
         Ai = GetComponent<IAstarAI>();
+        rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rebelliousness = Helpers.CalcRebellion();
         if (isMinor)
@@ -65,6 +69,9 @@ public class GuestMain : MonoBehaviour, Plaintiff
         else if (isDriver)
             spriteRenderer.sprite = driverSprite;
         ChangeBehavior(typeof(GBIdle));
+
+
+        animator = GetComponent<Animator>();
     }
 
     public void MakeDriver()
@@ -81,6 +88,8 @@ public class GuestMain : MonoBehaviour, Plaintiff
     // Update is called once per frame
     void Update()
     {
+        AnimatorManager();
+
 
         if (isHighlighted)
         {
@@ -109,5 +118,11 @@ public class GuestMain : MonoBehaviour, Plaintiff
     public void Complain(ComplaintManager.Reasons reason)
     {
         throw new NotImplementedException();
+    }
+
+    public void AnimatorManager()
+    {
+        
+        animator.SetBool("Walking", Ai.velocity.magnitude > 0.7f);
     }
 }

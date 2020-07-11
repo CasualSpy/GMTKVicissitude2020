@@ -16,6 +16,8 @@ public class GBDrinking : AbsGuestBehavior
         GFX = transform.Find("GFX");
 
         TimerDrinking = Random.Range(15, 30);
+
+        GetComponent<Animator>().SetBool("Drinking", true);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -48,5 +50,10 @@ public class GBDrinking : AbsGuestBehavior
             else
                 Ai.destination = Random.insideUnitSphere + transform.position;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<Animator>().SetBool("Drinking", false);
     }
 }
