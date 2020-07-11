@@ -23,6 +23,7 @@ public class ControlsManager : MonoBehaviour
             {
                 //Found guest
                 targetGuest = item.gameObject;
+                targetGuest.GetComponent<GuestMain>().isHighlighted = true;
                 break;
             }
         }
