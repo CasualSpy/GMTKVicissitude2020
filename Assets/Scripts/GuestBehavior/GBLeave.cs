@@ -11,7 +11,6 @@ public class GBLeave : AbsGuestBehavior
     {
         Ai = GetComponent<IAstarAI>();
         Ai.destination = new Vector3(-11, 0, 0);
-        //TimerIdle = Random.Range(10, 30);
     }
 
     public void Update()
@@ -21,4 +20,5 @@ public class GBLeave : AbsGuestBehavior
             Destroy(gameObject);
         }
     }
+
 }
