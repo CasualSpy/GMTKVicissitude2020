@@ -17,8 +17,25 @@ public class GBIdle : AbsGuestBehavior
 
     Vector2 SpotInsideHouse()
     {
-        return new Vector2(Random.Range(-5, 2), Random.Range(-3, 2));
-    }
+        Vector2 destination;
+        bool isObstacle;
+        do
+        {
+            isObstacle = false;
+            destination = new Vector2(Random.Range(-5, 2), Random.Range(-3, 2));
+            Collider2D[] overlaps = Physics2D.OverlapPointAll(destination);
+            foreach(Collider2D overlap in overlaps)
+            {
+                if (overlap.gameObject.layer == 8)
+                {
+                    isObstacle = true;
+                    break;
+                }
+            }
+        } while (isObstacle);
+        return destination;
+}
+
 
     public void Update()
     {
