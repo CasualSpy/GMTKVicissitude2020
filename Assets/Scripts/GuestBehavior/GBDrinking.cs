@@ -12,7 +12,7 @@ public class GBDrinking : AbsGuestBehavior
     private void Start()
     {
         Ai = GetComponent<IAstarAI>();
-        Ai.destination = Helpers.SpotInsideHouse();
+        Ai.destination = Helpers.SpotToHangOut();
         GFX = transform.Find("GFX");
 
         TimerDrinking = Random.Range(15, 30);
@@ -44,7 +44,7 @@ public class GBDrinking : AbsGuestBehavior
         if (Ai.reachedDestination)
         {
             if (Random.Range(1, 4) == 1)
-                Ai.destination = Helpers.SpotInsideHouse();
+                Ai.destination = Helpers.SpotToHangOut();
             else
                 Ai.destination = Random.insideUnitSphere + transform.position;
         }
