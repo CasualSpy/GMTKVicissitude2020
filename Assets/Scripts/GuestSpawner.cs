@@ -30,7 +30,6 @@ public class GuestSpawner : MonoBehaviour
             SpawnLogic();
             spawnTimer = Rate;
         }
-
     }
 
     private void SpawnLogic()
@@ -44,12 +43,14 @@ public class GuestSpawner : MonoBehaviour
             int amount = Math.Min(available - 1, UnityEngine.Random.Range(0, 5));
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(GuestGameObject, new Vector3(-10, (i + 1) * 0.3f, 0), Quaternion.identity);
+                bool isMinor = UnityEngine.Random.value < 0.1;
+                if (isMinor)
+                    SpawnMinor(i);
+                else
+                    SpawnGuest(i);
             }
 
         }
-        //if (GameObject.FindGameObjectsWithTag("Guest").Length < TargetQuantity)
-        //    Instantiate(GuestGameObject, new Vector3(-10, 0, 0), Quaternion.identity);
     }
 
     private void SpawnDriver()
@@ -57,5 +58,17 @@ public class GuestSpawner : MonoBehaviour
         GameObject go = Instantiate(GuestGameObject, new Vector3(-10, 0, 0), Quaternion.identity);
         GuestMain driver = go.GetComponent<GuestMain>();
         driver.MakeDriver();
+    }
+
+    private void SpawnGuest(int num)
+    {
+        Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
+    }
+
+    private void SpawnMinor(int num)
+    {
+        GameObject go = Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
+        GuestMain minor = go.GetComponent<GuestMain>();
+        minor.MakeMinor();
     }
 }
