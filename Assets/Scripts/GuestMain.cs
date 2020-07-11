@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class GuestMain : MonoBehaviour
+public class GuestMain : MonoBehaviour, Plaintiff
 {
     private IAstarAI Ai;
 
@@ -15,6 +15,7 @@ public class GuestMain : MonoBehaviour
     public bool isDriver;
     public bool hasKeys;
     public bool isMinor;
+    public bool isHighlighted;
     public Sprite driverSprite;
     public Sprite minorSprite;
     //How likely they are to do stupid stuff
@@ -25,7 +26,8 @@ public class GuestMain : MonoBehaviour
     public bool IsGrabbed
     {
         get { return isGrabbed; }
-        set {
+        set
+        {
             isGrabbed = value;
             Ai.canMove = !isGrabbed;
         }
@@ -34,9 +36,10 @@ public class GuestMain : MonoBehaviour
 
     public int Drunkness
     {
-        get => drunkness; set {
+        get => drunkness; set
+        {
             drunkness = value;
-            spriteRenderer.color = new Color(1-(float)drunkness / maxDrunkness, 1, 1-(float)drunkness / maxDrunkness);
+            spriteRenderer.color = new Color(1 - (float)drunkness / maxDrunkness, 1, 1 - (float)drunkness / maxDrunkness);
 
         }
     }
@@ -57,7 +60,7 @@ public class GuestMain : MonoBehaviour
         if (isMinor)
             spriteRenderer.sprite = minorSprite;
         else if (isDriver)
-            spriteRenderer.sprite = driverSprite; 
+            spriteRenderer.sprite = driverSprite;
         ChangeBehavior(typeof(GBIdle));
     }
 
@@ -76,6 +79,15 @@ public class GuestMain : MonoBehaviour
     void Update()
     {
 
+        if (isHighlighted)
+        {
+            spriteRenderer.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            isHighlighted = false;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public void ChangeBehavior(Type type)
@@ -86,6 +98,8 @@ public class GuestMain : MonoBehaviour
         gameObject.AddComponent(type);
     }
 
-
-
+    public void Complain(ComplaintManager.Reasons reason)
+    {
+        throw new NotImplementedException();
+    }
 }
