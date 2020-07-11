@@ -14,7 +14,9 @@ public class GuestMain : MonoBehaviour
     public const int maxDrunkness = 2;
     public bool isDriver;
     public bool hasKeys;
+    public bool isMinor;
     public Sprite driverSprite;
+    public Sprite minorSprite;
     //How likely they are to do stupid stuff
     public float rebelliousness;
 
@@ -52,7 +54,9 @@ public class GuestMain : MonoBehaviour
         Ai = GetComponent<IAstarAI>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rebelliousness = Helpers.CalcRebellion();
-        if (isDriver)
+        if (isMinor)
+            spriteRenderer.sprite = minorSprite;
+        else if (isDriver)
             spriteRenderer.sprite = driverSprite; 
         ChangeBehavior(typeof(GBIdle));
     }
@@ -63,6 +67,10 @@ public class GuestMain : MonoBehaviour
         hasKeys = true;
     }
 
+    public void MakeMinor()
+    {
+        isMinor = true;
+    }
 
     // Update is called once per frame
     void Update()
