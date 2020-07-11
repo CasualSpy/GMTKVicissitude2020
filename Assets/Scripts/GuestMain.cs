@@ -12,7 +12,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
     private int drunkness;
-    public const int maxDrunkness = 2;
+    public const int maxDrunkness = 4;
     public bool isDriver;
     public bool hasKeys;
     public bool isMinor;
@@ -126,7 +126,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
         
         animator.SetBool("Walking", Ai.velocity.magnitude > 0.7f);
 
-        if (Ai.velocity.x < -0.1f)
+        if (Ai.velocity.x < 0.1f)
             spriteRenderer.flipX = true;
         else if (Ai.velocity.x > 0.1f)
             spriteRenderer.flipX = false;
