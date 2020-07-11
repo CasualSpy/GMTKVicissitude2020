@@ -8,14 +8,31 @@ public class GuestSpawner : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject GuestGameObject;
-
+    private TMPro.TextMeshProUGUI guestDisplay;
     public int TargetQuantity = 10;
     public float Rate = 10;
+
+    private int guestCount = 0;
+
+    public int GuestCount
+    {
+        get
+        {
+            return guestCount;
+        }
+        set
+        {
+            guestCount = value;
+            guestDisplay.text = $"guests / {value:00}";
+        }
+    }
+
 
     private float spawnTimer;
 
     void Start()
     {
+        guestDisplay = GameObject.Find("GuestDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         SpawnLogic();
         spawnTimer = Rate;
     }
