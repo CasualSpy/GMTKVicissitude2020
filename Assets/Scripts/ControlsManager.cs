@@ -53,7 +53,7 @@ public class ControlsManager : MonoBehaviour
         {
             if (targetGuest != null)
             {
-                targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBLeave));
+                targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBKicked));
             }
         }
     }

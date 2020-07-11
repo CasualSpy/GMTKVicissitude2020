@@ -3,7 +3,7 @@ using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GBKicked : AbsGuestBehavior
+public class GBLeave : AbsGuestBehavior
 {
     float TimerIdle;
 
@@ -17,13 +17,6 @@ public class GBKicked : AbsGuestBehavior
     {
         if (transform.position.x < -10)
         {
-            GuestMain guest = gameObject.GetComponent<GuestMain>();
-
-            if (guest.isMinor)
-            {
-                GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint());
-            }
-
             Destroy(gameObject);
         }
     }
