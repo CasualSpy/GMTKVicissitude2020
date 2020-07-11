@@ -8,11 +8,12 @@ public class GBPuking : AbsGuestBehavior
 {
     GameObject Puke;
 
-    float PukeTimer = 5;
+    float PukeTimer = 30;
 
     float ShakeTimer = 0.1f;
     Transform GFX;
     bool isPuking = false;
+    bool isInToilet = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,14 @@ public class GBPuking : AbsGuestBehavior
         GFX = transform.Find("GFX");
         Ai = GetComponent<IAstarAI>();
         Puke = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Puke.prefab", typeof(GameObject));
+        Ai.destination = Helpers.SpotToHangOut();
+        Ai.maxSpeed = 0.5f;
         //Puke = (GameObject)Resources.Load("Prefabs/Puke", typeof(GameObject));
+    }
+
+    private void OnDestroy()
+    {
+        Ai.maxSpeed = 1f;
     }
 
     // Update is called once per frame
@@ -48,6 +56,21 @@ public class GBPuking : AbsGuestBehavior
         if (Ai.reachedDestination && !isPuking)
         {
                 Ai.destination = Random.insideUnitSphere + transform.position;
+        }
+
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!isPuking && !isInToilet && collision.name == "Restroom")
+        {
+            //Is in toilet
+            isPuking = true;
+            GFX.localPosition = Vector3.zero;
+            //Instantiate(Puke, transform.position, Quaternion.identity);
+            GetComponent<GuestMain>().Drunkness = 0;
+            ChangeBehavior(typeof(GBIdle));
         }
     }
 }
