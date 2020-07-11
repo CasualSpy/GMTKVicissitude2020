@@ -6,11 +6,25 @@ using UnityEngine;
 
 public class GuestMain : MonoBehaviour
 {
+    private IAstarAI Ai;
+
     // Start is called before the first frame update
 
     private SpriteRenderer spriteRenderer;
     private int drunkness;
     public const int maxDrunkness = 3;
+
+    private bool isGrabbed;
+
+    public bool IsGrabbed
+    {
+        get { return isGrabbed; }
+        set {
+            isGrabbed = value;
+            Ai.canMove = !isGrabbed;
+        }
+    }
+
 
     public int Drunkness
     {
@@ -31,6 +45,7 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
+        Ai = GetComponent<IAstarAI>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         ChangeBehavior(typeof(GBIdle));
     }
