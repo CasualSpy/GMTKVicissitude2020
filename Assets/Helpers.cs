@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Linq;
 
 public class Helpers
 {
     #region Guests 
+
+    public static float CalcRebellion()
+    {
+        return 1 - Mathf.Sqrt(1 - UnityEngine.Random.value);
+    }
 
     public enum SkinColor
     {

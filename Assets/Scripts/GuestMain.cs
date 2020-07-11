@@ -3,16 +3,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GuestMain : MonoBehaviour
 {
     private IAstarAI Ai;
 
-    // Start is called before the first frame update
-
     private SpriteRenderer spriteRenderer;
     private int drunkness;
     public const int maxDrunkness = 3;
+    public bool isDriver;
+    public Sprite driverSprite;
+    //How likely they are to do stupid stuff
+    public float rebelliousness;
 
     private bool isGrabbed;
 
@@ -47,8 +50,15 @@ public class GuestMain : MonoBehaviour
     {
         Ai = GetComponent<IAstarAI>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        isDriver = UnityEngine.Random.value < 0.2f;
+        rebelliousness = Helpers.CalcRebellion();
+        if (isDriver)
+            spriteRenderer.sprite = driverSprite; 
         ChangeBehavior(typeof(GBIdle));
     }
+
+
+
 
     // Update is called once per frame
     void Update()

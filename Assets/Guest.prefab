@@ -245,3 +245,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892161a48d5cad744b23c38b49b3305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDriver: 0
+  driverSprite: {fileID: 21300000, guid: 20f5f04e4f6713a4b9ece16c8e79b956, type: 3}
