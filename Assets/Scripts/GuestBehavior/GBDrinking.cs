@@ -7,13 +7,11 @@ public class GBDrinking : AbsGuestBehavior
 {
 
     float TimerDrinking;
-    Transform GFX;
 
     private void Start()
     {
         Ai = GetComponent<IAstarAI>();
         Ai.destination = Helpers.SpotToHangOut();
-        GFX = transform.Find("GFX");
 
         TimerDrinking = Random.Range(15, 30);
 
@@ -32,16 +30,12 @@ public class GBDrinking : AbsGuestBehavior
         {
             GuestMain guestMain = GetComponent<GuestMain>();
             guestMain.Drunkness += 2;
-            GFX.localPosition = Vector3.zero;
 
             if (guestMain.Drunkness == GuestMain.maxDrunkness)
                 ChangeBehavior(typeof(GBPuking));
             else
                 ChangeBehavior(typeof(GBIdle));
         }
-
-
-        GFX.localPosition = new Vector3(0, Mathf.Sin(Time.timeSinceLevelLoad * 8) / 4);
 
         if (Ai.reachedDestination)
         {

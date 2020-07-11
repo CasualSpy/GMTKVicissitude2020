@@ -10,8 +10,6 @@ public class GBPuking : AbsGuestBehavior
 
     float PukeTimer = 30;
 
-    float ShakeTimer = 0.1f;
-    Transform GFX;
     bool isPuking = false;
     bool isInToilet = false;
 
@@ -20,7 +18,6 @@ public class GBPuking : AbsGuestBehavior
     // Start is called before the first frame update
     void Start()
     {
-        GFX = transform.Find("GFX");
         Ai = GetComponent<IAstarAI>();
         Puke = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Puke.prefab", typeof(GameObject));
         Ai.destination = Helpers.SpotToHangOut();
@@ -28,7 +25,6 @@ public class GBPuking : AbsGuestBehavior
 
         animator = GetComponent<Animator>();
         animator.SetBool("About to puke", true);
-        //Puke = (GameObject)Resources.Load("Prefabs/Puke", typeof(GameObject));
     }
 
     private void OnDestroy()
@@ -53,13 +49,6 @@ public class GBPuking : AbsGuestBehavior
 
         }
 
-        //ShakeTimer -= Time.deltaTime;
-        //if (ShakeTimer <= 0f && !isPuking)
-        //{
-        //    ShakeTimer = 0.05f;
-        //    GFX.localPosition = Random.insideUnitCircle / 4;
-        //}
-
         if (Ai.reachedDestination && !isPuking)
         {
                 Ai.destination = Random.insideUnitSphere + transform.position;
@@ -77,7 +66,7 @@ public class GBPuking : AbsGuestBehavior
             
             isPuking = true;
             GameObject.Find("Player").GetComponent<ControlsManager>().Release();
-            transform.position = GameObject.Find("Toilet").transform.position;// - new Vector3(0,0.3f);
+            transform.position = GameObject.Find("Toilet").transform.position;
             Ai.canMove = false;
             animator.SetBool("Puking", true);
             Invoke("FinishPuking", 3f);
