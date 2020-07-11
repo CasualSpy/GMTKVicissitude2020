@@ -95,7 +95,7 @@ public class Helpers
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Zone");
 
-        GameObject chosenZone = objs[Random.Range(0, objs.Length - 1)];
+        GameObject chosenZone = objs[Random.Range(0, objs.Length)];
         Collider2D collider = chosenZone.GetComponent<Collider2D>();
         var bounds = collider.bounds;
         var center = bounds.center;
