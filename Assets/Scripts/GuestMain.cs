@@ -13,6 +13,7 @@ public class GuestMain : MonoBehaviour
     private int drunkness;
     public const int maxDrunkness = 3;
     public bool isDriver;
+    public bool hasKeys;
     public Sprite driverSprite;
     //How likely they are to do stupid stuff
     public float rebelliousness;
@@ -50,14 +51,17 @@ public class GuestMain : MonoBehaviour
     {
         Ai = GetComponent<IAstarAI>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        isDriver = UnityEngine.Random.value < 0.2f;
         rebelliousness = Helpers.CalcRebellion();
         if (isDriver)
             spriteRenderer.sprite = driverSprite; 
         ChangeBehavior(typeof(GBIdle));
     }
 
-
+    public void MakeDriver()
+    {
+        isDriver = true;
+        hasKeys = true;
+    }
 
 
     // Update is called once per frame

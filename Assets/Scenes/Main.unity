@@ -674,7 +674,7 @@ MonoBehaviour:
   GuestGameObject: {fileID: 5787991864668016721, guid: e87719c89c23a8e4e8d687451d6549ed,
     type: 3}
   TargetQuantity: 10
-  Rate: 1
+  Rate: 10
 --- !u!4 &1561285369
 Transform:
   m_ObjectHideFlags: 0
