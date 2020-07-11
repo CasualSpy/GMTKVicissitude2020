@@ -68,7 +68,8 @@ public class GBHorny : AbsGuestBehavior
     Vector3 FrontOfCabanon()
     {
 
-        Collider2D collider = GameObject.Find("Cabanon").GetComponent<Collider2D>();
+        Collider2D collider = GameObject.Find("PorteCabanon").GetComponent<Collider2D>();
+
         var bounds = collider.bounds;
         var center = bounds.center;
 

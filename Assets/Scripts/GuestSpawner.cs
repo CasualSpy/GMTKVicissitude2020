@@ -8,14 +8,32 @@ public class GuestSpawner : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject GuestGameObject;
-
+    private TMPro.TextMeshProUGUI guestDisplay;
     public int TargetQuantity = 10;
     public float Rate = 10;
+    public float minorRate = 0.1f;
+
+    private int guestCount = 0;
+
+    public int GuestCount
+    {
+        get
+        {
+            return guestCount;
+        }
+        set
+        {
+            guestCount = value;
+            guestDisplay.text = $"guests / {value:00}";
+        }
+    }
+
 
     private float spawnTimer;
 
     void Start()
     {
+        guestDisplay = GameObject.Find("GuestDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         SpawnLogic();
         spawnTimer = Rate;
     }
@@ -43,7 +61,7 @@ public class GuestSpawner : MonoBehaviour
             int amount = Math.Min(available - 1, UnityEngine.Random.Range(0, 5));
             for (int i = 0; i < amount; i++)
             {
-                bool isMinor = UnityEngine.Random.value < 0.1;
+                bool isMinor = UnityEngine.Random.value < minorRate;
                 if (isMinor)
                     SpawnMinor(i);
                 else
