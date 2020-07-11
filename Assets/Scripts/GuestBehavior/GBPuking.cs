@@ -45,6 +45,7 @@ public class GBPuking : AbsGuestBehavior
         if (PukeTimer < 0 && !isPuking)
         {
             //BLERGH
+            GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(GetComponent<GuestMain>(), ComplaintManager.Reasons.Puke));
             isPuking = true;
             Instantiate(Puke, transform.position, Quaternion.identity);
             Ai.canMove = false;
