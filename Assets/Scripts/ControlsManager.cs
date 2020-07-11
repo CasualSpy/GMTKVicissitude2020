@@ -5,18 +5,27 @@ using UnityEngine;
 public class ControlsManager : MonoBehaviour
 {
     private Rigidbody2D rb2d;
+    SpriteRenderer spriteRenderer;
     public float speed;
     bool isGrabbing = false;
+
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
+        AnimatorManage();
+
+
         GameObject targetGuest = null;
+
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
         {
             if (item.tag == "Guest")
@@ -33,11 +42,9 @@ public class ControlsManager : MonoBehaviour
         {
             if (isGrabbing)
             {
-                FixedJoint2D joint = GetComponent<FixedJoint2D>();
-                joint.connectedBody.GetComponent<GuestMain>().IsGrabbed = false;
-                Destroy(joint);
-                isGrabbing = false;
-            } else
+                Release();
+            }
+            else
             {
                 if (targetGuest != null)
                 {
@@ -58,6 +65,15 @@ public class ControlsManager : MonoBehaviour
         }
     }
 
+    public void Release()
+    {
+        FixedJoint2D joint = GetComponent<FixedJoint2D>();
+        joint.connectedBody.GetComponent<GuestMain>().IsGrabbed = false;
+        joint.connectedBody.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        Destroy(joint);
+        isGrabbing = false;
+    }
+
     private void FixedUpdate()
     {
         HandleMovement();
@@ -76,5 +92,19 @@ public class ControlsManager : MonoBehaviour
         //rb2d.velocity = rb2d.velocity.magnitude * movement.normalized;
 
         rb2d.AddForce(movement.normalized * speed);
+    }
+
+    void AnimatorManage()
+    {
+        animator.SetBool("Walking", (rb2d.velocity.magnitude > 0.2f) ||
+            Input.GetAxisRaw("Vertical") != 0 ||
+            Input.GetAxisRaw("Horizontal") != 0
+            );
+        animator.SetBool("Grabbing", isGrabbing);
+
+        if (rb2d.velocity.x < -0.1f)
+            spriteRenderer.flipX = false;
+        else if (rb2d.velocity.x > 0.1f)
+            spriteRenderer.flipX = true;
     }
 }

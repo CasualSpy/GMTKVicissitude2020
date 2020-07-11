@@ -46,7 +46,6 @@ public class GBPuking : AbsGuestBehavior
         {
             //BLERGH
             isPuking = true;
-            GFX.localPosition = Vector3.zero;
             Instantiate(Puke, transform.position, Quaternion.identity);
             Ai.canMove = false;
             animator.SetBool("Puking", true);
@@ -74,10 +73,14 @@ public class GBPuking : AbsGuestBehavior
         if (!isPuking && !isInToilet && collision.name == "Restroom")
         {
             //Is in toilet
+            //BLERGH
+            
             isPuking = true;
-            GFX.localPosition = Vector3.zero;
-            //Instantiate(Puke, transform.position, Quaternion.identity);
-            FinishPuking();
+            GameObject.Find("Player").GetComponent<ControlsManager>().Release();
+            transform.position = GameObject.Find("Toilet").transform.position;// - new Vector3(0,0.3f);
+            Ai.canMove = false;
+            animator.SetBool("Puking", true);
+            Invoke("FinishPuking", 3f);
         }
     }
 
