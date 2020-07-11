@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GBDrink : AbsGuestBehavior
+public class GBGetDrink : AbsGuestBehavior
 {
 
     private void Start()
@@ -18,13 +18,7 @@ public class GBDrink : AbsGuestBehavior
         if (collision.transform.name == "Bar")
         {
             //Bar has been touched! Let's drink!
-            GuestMain guestMain = GetComponent<GuestMain>();
-            guestMain.Drunkness++;
-
-            if (guestMain.Drunkness == GuestMain.maxDrunkness)
-                ChangeBehavior(typeof(GBPuking));
-            else
-                ChangeBehavior(typeof(GBIdle));
+            ChangeBehavior(typeof(GBDrinking));
         }
     }
 

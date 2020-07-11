@@ -11,7 +11,7 @@ public class GuestMain : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private int drunkness;
-    public const int maxDrunkness = 3;
+    public const int maxDrunkness = 2;
     public bool isDriver;
     public bool hasKeys;
     public Sprite driverSprite;

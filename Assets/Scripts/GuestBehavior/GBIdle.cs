@@ -34,7 +34,7 @@ public class GBIdle : AbsGuestBehavior
             }
         } while (isObstacle);
         return destination;
-}
+    }
 
 
     public void Update()
@@ -45,7 +45,7 @@ public class GBIdle : AbsGuestBehavior
         if (TimerIdle < 0)
         {
 
-            ChangeBehavior(typeof(GBDrink));
+            ChangeBehavior(typeof(GBGetDrink));
         } else if (Ai.reachedDestination)
         {
             if (Random.Range(1, 4) == 1)
