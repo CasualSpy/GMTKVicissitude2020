@@ -11,6 +11,7 @@ public class GuestSpawner : MonoBehaviour
 
     public int TargetQuantity = 10;
     public float Rate = 10;
+    public float minorRate = 0.1f;
 
     private float spawnTimer;
 
@@ -43,7 +44,7 @@ public class GuestSpawner : MonoBehaviour
             int amount = Math.Min(available - 1, UnityEngine.Random.Range(0, 5));
             for (int i = 0; i < amount; i++)
             {
-                bool isMinor = UnityEngine.Random.value < 0.1;
+                bool isMinor = UnityEngine.Random.value < minorRate;
                 if (isMinor)
                     SpawnMinor(i);
                 else
