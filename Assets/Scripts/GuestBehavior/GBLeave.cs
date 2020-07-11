@@ -3,7 +3,7 @@ using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GBLeave : AbsGuestBehavior
+public class GBKicked : AbsGuestBehavior
 {
     float TimerIdle;
 
@@ -11,14 +11,21 @@ public class GBLeave : AbsGuestBehavior
     {
         Ai = GetComponent<IAstarAI>();
         Ai.destination = new Vector3(-11, 0, 0);
-        //TimerIdle = Random.Range(10, 30);
     }
 
     public void Update()
     {
         if (transform.position.x < -10)
         {
+            GuestMain guest = gameObject.GetComponent<GuestMain>();
+
+            if (guest.isMinor)
+            {
+                GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint());
+            }
+
             Destroy(gameObject);
         }
     }
+
 }

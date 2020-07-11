@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class GuestMain : MonoBehaviour
+public class GuestMain : MonoBehaviour, Plaintiff
 {
     private IAstarAI Ai;
 
@@ -98,6 +98,8 @@ public class GuestMain : MonoBehaviour
         gameObject.AddComponent(type);
     }
 
-
-
+    public void Complain(ComplaintManager.Reasons reason)
+    {
+        throw new NotImplementedException();
+    }
 }
