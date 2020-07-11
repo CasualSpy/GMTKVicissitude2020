@@ -16,6 +16,19 @@ public class ControlsManager : MonoBehaviour
 
     private void Update()
     {
+        GameObject targetGuest = null;
+        foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
+        {
+            if (item.tag == "Guest")
+            {
+                //Found guest
+                targetGuest = item.gameObject;
+                targetGuest.GetComponent<GuestMain>().isHighlighted = true;
+                break;
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrabbing)
@@ -26,26 +39,21 @@ public class ControlsManager : MonoBehaviour
                 isGrabbing = false;
             } else
             {
-                //This pretty much picks up one of the closer guest when space is pressed. Needs to be changed to mouse click (or keep it like that?)
-                GameObject guest = null;
-                foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
-                {
-                    if (item.tag == "Guest")
-                    {
-                        //Found guest
-                        guest = item.gameObject;
-                        break;
-                    }
-                } 
-
-                if (guest != null)
+                if (targetGuest != null)
                 {
                     //Grab'Em!
                     FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
-                    joint.connectedBody = guest.GetComponent<Rigidbody2D>();
+                    joint.connectedBody = targetGuest.GetComponent<Rigidbody2D>();
                     isGrabbing = true;
-                    guest.GetComponent<GuestMain>().IsGrabbed = true;
+                    targetGuest.GetComponent<GuestMain>().IsGrabbed = true;
                 }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (targetGuest != null)
+            {
+                targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBLeave));
             }
         }
     }
