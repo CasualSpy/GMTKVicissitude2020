@@ -19,7 +19,7 @@ public class GBPuking : AbsGuestBehavior
     void Start()
     {
         Ai = GetComponent<IAstarAI>();
-        Puke = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Puke.prefab", typeof(GameObject));
+        Puke = Resources.Load("Puke") as GameObject;
         Ai.destination = Helpers.SpotToHangOut();
         Ai.maxSpeed = 0.5f;
 
@@ -41,6 +41,7 @@ public class GBPuking : AbsGuestBehavior
         if (PukeTimer < 0 && !isPuking)
         {
             //BLERGH
+            GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(GetComponent<GuestMain>(), ComplaintManager.Reasons.Puke));
             isPuking = true;
             Instantiate(Puke, transform.position, Quaternion.identity);
             Ai.canMove = false;

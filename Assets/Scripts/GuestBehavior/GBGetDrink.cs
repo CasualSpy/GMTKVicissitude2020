@@ -10,6 +10,10 @@ public class GBGetDrink : AbsGuestBehavior
     {
         Ai = GetComponent<IAstarAI>();
         Ai.destination = GameObject.Find("Bar").transform.position;
+        Bounds bounds = GameObject.Find("Bar").GetComponent<BoxCollider2D>().bounds;
+        Ai.destination = new Vector3(
+        Random.Range(bounds.min.x, bounds.max.x),
+        Random.Range(bounds.min.y, bounds.max.y));
 
     }
 

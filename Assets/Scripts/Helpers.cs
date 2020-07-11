@@ -114,7 +114,6 @@ public class Helpers
             y = UnityEngine.Random.Range(center.y - bounds.extents.y, center.y + bounds.extents.y);
             attempt++;
         } while (!collider.OverlapPoint(new Vector2(x, y)) || attempt >= 100);
-        Debug.Log("Attemps: " + attempt);
 
         return new Vector3(x, y, 0);
     }

@@ -45,7 +45,8 @@ public class ComplaintManager : MonoBehaviour
         Designated_driver,
         Minor,
         Dirty_house,
-        Noise
+        Noise,
+        Puke
     }
 
 
