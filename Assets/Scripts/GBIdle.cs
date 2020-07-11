@@ -27,8 +27,8 @@ public class GBIdle : AbsGuestBehavior
         
         if (TimerIdle < 0)
         {
-            gameObject.AddComponent<GBLeave>();
-            Destroy(this);
+
+            ChangeBehavior(typeof(GBLeave));
         } else if (Ai.reachedDestination)
         {
             if (Random.Range(1, 4) == 1)

@@ -1,4 +1,5 @@
 ﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,15 +20,23 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
-        gameObject.AddComponent<GBIdle>();
+
+        ChangeBehavior(typeof(GBIdle));
         yo = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+    }
+
+    public void ChangeBehavior(Type type)
+    {
+        AbsGuestBehavior Oldbehavior = GetComponent<AbsGuestBehavior>();
+        if (Oldbehavior != null)
+            Destroy(Oldbehavior);
+        gameObject.AddComponent(type);
     }
 
 }
