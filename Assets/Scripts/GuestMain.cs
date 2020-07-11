@@ -125,5 +125,13 @@ public class GuestMain : MonoBehaviour, Plaintiff
     {
         
         animator.SetBool("Walking", Ai.velocity.magnitude > 0.7f);
+
+        if (Ai.velocity.x < -0.1f)
+            spriteRenderer.flipX = true;
+        else if (Ai.velocity.x > 0.1f)
+            spriteRenderer.flipX = false;
+
+
+
     }
 }
