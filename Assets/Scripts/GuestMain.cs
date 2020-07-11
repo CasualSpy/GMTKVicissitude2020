@@ -10,12 +10,14 @@ public class GuestMain : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private int drunkness;
+    public const int maxDrunkness = 3;
 
     public int Drunkness
     {
         get => drunkness; set {
             drunkness = value;
-            spriteRenderer.color = new Color(1-(float)drunkness / 5f, 1, 1-(float)drunkness / 5f);
+            spriteRenderer.color = new Color(1-(float)drunkness / maxDrunkness, 1, 1-(float)drunkness / maxDrunkness);
+
         }
     }
 
@@ -29,7 +31,7 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         ChangeBehavior(typeof(GBIdle));
     }
 
@@ -46,5 +48,7 @@ public class GuestMain : MonoBehaviour
             Destroy(Oldbehavior);
         gameObject.AddComponent(type);
     }
+
+
 
 }
