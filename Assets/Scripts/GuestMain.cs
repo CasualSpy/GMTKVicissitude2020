@@ -6,16 +6,32 @@ using UnityEngine;
 
 public class GuestMain : MonoBehaviour
 {
+    private IAstarAI Ai;
+
     // Start is called before the first frame update
 
     private SpriteRenderer spriteRenderer;
     private int drunkness;
+    public const int maxDrunkness = 3;
+
+    private bool isGrabbed;
+
+    public bool IsGrabbed
+    {
+        get { return isGrabbed; }
+        set {
+            isGrabbed = value;
+            Ai.canMove = !isGrabbed;
+        }
+    }
+
 
     public int Drunkness
     {
         get => drunkness; set {
             drunkness = value;
-            spriteRenderer.color = new Color(1-(float)drunkness / 5f, 1, 1-(float)drunkness / 5f);
+            spriteRenderer.color = new Color(1-(float)drunkness / maxDrunkness, 1, 1-(float)drunkness / maxDrunkness);
+
         }
     }
 
@@ -29,7 +45,8 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        Ai = GetComponent<IAstarAI>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         ChangeBehavior(typeof(GBIdle));
     }
 
@@ -46,5 +63,7 @@ public class GuestMain : MonoBehaviour
             Destroy(Oldbehavior);
         gameObject.AddComponent(type);
     }
+
+
 
 }
