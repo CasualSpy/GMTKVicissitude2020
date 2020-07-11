@@ -20,6 +20,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
     public Sprite minorSprite;
     //How likely they are to do stupid stuff
     public float rebelliousness;
+    private GuestSpawner spawner;
 
     private bool isGrabbed;
 
@@ -54,6 +55,8 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     void Start()
     {
+        spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
+        spawner.GuestCount++;
         Ai = GetComponent<IAstarAI>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rebelliousness = Helpers.CalcRebellion();
@@ -96,6 +99,11 @@ public class GuestMain : MonoBehaviour, Plaintiff
         if (Oldbehavior != null)
             Destroy(Oldbehavior);
         gameObject.AddComponent(type);
+    }
+
+    private void OnDestroy()
+    {
+        spawner.GuestCount--;
     }
 
     public void Complain(ComplaintManager.Reasons reason)

@@ -16,6 +16,7 @@ public class ComplaintManager : MonoBehaviour
         }
     }
 
+    private TMPro.TextMeshProUGUI complaintDisplay;
     Dictionary<Reasons, int> complaintValues;
     List<Complaint> complaints;
     // Start is called before the first frame update
@@ -30,6 +31,10 @@ public class ComplaintManager : MonoBehaviour
         complaintValues.Add(Reasons.Kickout, 1);
         complaintValues.Add(Reasons.Minor, 1);
         complaintValues.Add(Reasons.Noise, 1);
+
+        complaintDisplay = GameObject.Find("ComplaintDisplay").GetComponent<TMPro.TextMeshProUGUI>();
+        complaintDisplay.text = $"complaints / 00";
+        Debug.Log(complaints.Count);
     }
 
     public enum Reasons
@@ -47,6 +52,7 @@ public class ComplaintManager : MonoBehaviour
     public void AddComplaint(Complaint complaint)
     {
         complaints.Add(complaint);
+        complaintDisplay.text = $"complaints / {complaints.Count:00}";
         Debug.Log("Complaint added");
     }
 
