@@ -31,7 +31,7 @@ public class GBDrinking : AbsGuestBehavior
         if (TimerDrinking < 0)
         {
             GuestMain guestMain = GetComponent<GuestMain>();
-            guestMain.Drunkness++;
+            guestMain.Drunkness += 2;
             GFX.localPosition = Vector3.zero;
 
             if (guestMain.Drunkness == GuestMain.maxDrunkness)
