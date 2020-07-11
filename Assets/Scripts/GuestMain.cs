@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class GuestMain : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    AbsGuestBehavior guestBehavior;
+
+    public int yo;
+    //public Transform transform;
 
     enum State
     {
@@ -16,13 +19,15 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
-        
+        gameObject.AddComponent<GBIdle>();
+        yo = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
     }
-
 
 }
