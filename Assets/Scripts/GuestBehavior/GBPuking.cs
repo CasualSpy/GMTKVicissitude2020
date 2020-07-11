@@ -22,7 +22,7 @@ public class GBPuking : AbsGuestBehavior
     {
         GFX = transform.Find("GFX");
         Ai = GetComponent<IAstarAI>();
-        Puke = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Puke.prefab", typeof(GameObject));
+        Puke = Resources.Load("Puke") as GameObject;
         Ai.destination = Helpers.SpotToHangOut();
         Ai.maxSpeed = 0.5f;
 

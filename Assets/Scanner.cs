@@ -19,7 +19,7 @@ public class Scanner : MonoBehaviour
 
         if (timer < 0)
         {
-            GetComponent<AstarPath>().ScanAsync();
+            GetComponent<AstarPath>().Scan();
             timer = Rate;
         }
     }

@@ -8,6 +8,7 @@ public class ControlsManager : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public float speed;
     bool isGrabbing = false;
+    GameObject targetGuest = null;
 
     Animator animator;
 
@@ -24,7 +25,7 @@ public class ControlsManager : MonoBehaviour
         AnimatorManage();
 
 
-        GameObject targetGuest = null;
+
 
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
         {
@@ -102,9 +103,17 @@ public class ControlsManager : MonoBehaviour
             );
         animator.SetBool("Grabbing", isGrabbing);
 
-        if (rb2d.velocity.x < -0.1f)
-            spriteRenderer.flipX = false;
-        else if (rb2d.velocity.x > 0.1f)
-            spriteRenderer.flipX = true;
+
+        if (isGrabbing)
+        {
+            spriteRenderer.flipX = (transform.position - targetGuest.transform.position).x > 0;
+        }
+        else
+        {
+            if (rb2d.velocity.x < -0.1f)
+                spriteRenderer.flipX = false;
+            else if (rb2d.velocity.x > 0.1f)
+                spriteRenderer.flipX = true;
+        }
     }
 }
