@@ -53,9 +53,9 @@ public class CabanonManager : MonoBehaviour
         GameObject firstGuest = c.first.gameObject;
         GameObject secondGuest = c.second.gameObject;
         firstGuest.GetComponent<CircleCollider2D>().enabled = false;
-        firstGuest.GetComponent<SpriteRenderer>().enabled = false;
+        firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
         secondGuest.GetComponent<CircleCollider2D>().enabled = false;
-        secondGuest.GetComponent<SpriteRenderer>().enabled = false;
+        secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     void StopWoohoo()
@@ -63,14 +63,13 @@ public class CabanonManager : MonoBehaviour
         GameObject firstGuest = occupants.first.gameObject;
         GameObject secondGuest = occupants.second.gameObject;
 
+        firstGuest.GetComponent<CircleCollider2D>().enabled = true;
+        firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
+        secondGuest.GetComponent<CircleCollider2D>().enabled = true;
+        secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
         firstGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
         secondGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
 
-        firstGuest.GetComponent<CircleCollider2D>().enabled = true;
-        firstGuest.GetComponent<SpriteRenderer>().enabled = true;
-
-        secondGuest.GetComponent<CircleCollider2D>().enabled = true;
-        secondGuest.GetComponent<SpriteRenderer>().enabled = true;
 
         occupied = false;
     }

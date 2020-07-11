@@ -21,7 +21,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
     public Sprite minorSprite;
     //How likely they are to do stupid stuff
     public float rebelliousness;
-    public GBHorny partner;
+    public GuestMain partner;
     private GuestSpawner spawner;
 
     private Animator animator;

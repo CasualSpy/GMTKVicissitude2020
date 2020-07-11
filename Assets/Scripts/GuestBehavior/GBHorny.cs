@@ -16,15 +16,15 @@ public class GBHorny : AbsGuestBehavior
         gm = gameObject.GetComponent<GuestMain>();
         timerNoPartner = Random.Range(15, 20);
         Ai = GetComponent<IAstarAI>();
-        List<GBHorny> horny = GameObject.FindGameObjectsWithTag("Guest").ToList().Select(x => x.GetComponent<GBHorny>()).Where(x => x != null && x != this && x.gm.partner == null).ToList();
+        List<GuestMain> horny = GameObject.FindGameObjectsWithTag("Guest").ToList().Select(x => x.GetComponent<GuestMain>()).Where(x => x.GetComponent<GBHorny>() != null && x != gm && x.partner == null).ToList();
         if (horny.Count > 0)
         {
             gm.partner = horny[UnityEngine.Random.Range(0, horny.Count)];
-            gm.partner.GetComponent<GuestMain>().partner = this;
+            gm.partner.partner = gm;
             timerCantReach = Random.Range(15, 20);
-            gm.partner.timerCantReach = timerCantReach;
+            gm.partner.GetComponent<GBHorny>().timerCantReach = timerCantReach;
             Ai.destination = FrontOfCabanon();
-            gm.partner.Ai.destination = FrontOfCabanon();
+            gm.partner.GetComponent<GBHorny>().Ai.destination = FrontOfCabanon();
         }
     }
 
@@ -48,14 +48,14 @@ public class GBHorny : AbsGuestBehavior
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.transform.name == "Cabanon")
+        if (collision.transform.name == "PorteCabanon")
         {
             nearCabanon = true;
-            if (gm.partner != null)
+            if (gm.partner != null && gm.partner.GetComponent<GBHorny>().nearCabanon)
             {
                 gm.partner.ChangeBehavior(typeof(GBWaitingCabanon));
                 gm.ChangeBehavior(typeof(GBWaitingCabanon));
-                GameObject.Find("Cabanon").GetComponent<CabanonManager>().WaitInLine(new CabanonManager.Couple(gm, gm.partner.GetComponent<GuestMain>()));
+                GameObject.Find("PorteCabanon").GetComponent<CabanonManager>().WaitInLine(new CabanonManager.Couple(gm, gm.partner.GetComponent<GuestMain>()));
             }
         }
     }
