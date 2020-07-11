@@ -34,7 +34,6 @@ public class SoundLevel : MonoBehaviour, Plaintiff
         {
             cm.AddComplaint(new ComplaintManager.Complaint() { plaintiff = this, reason = ComplaintManager.Reasons.Noise }) ;
             annoyance = 0f;
-            soundLevel = 0f;
         }
     }
 
