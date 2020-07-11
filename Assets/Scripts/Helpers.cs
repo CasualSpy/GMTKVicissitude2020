@@ -10,6 +10,11 @@ public class Helpers
 {
     #region Guests 
 
+    public static float RandomRebelliousChoice(GuestMain gm)
+    {
+        return 1 - Mathf.Sqrt(1 - (Random.value + gm.rebelliousness) / 2);
+    }
+
     public static float CalcRebellion()
     {
         return 1 - Mathf.Sqrt(1 - UnityEngine.Random.value);
@@ -100,8 +105,8 @@ public class Helpers
         var bounds = collider.bounds;
         var center = bounds.center;
 
-        float x = 0;
-        float y = 0;
+        float x;
+        float y;
         int attempt = 0;
         do
         {
