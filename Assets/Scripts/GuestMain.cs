@@ -8,8 +8,17 @@ public class GuestMain : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    private SpriteRenderer spriteRenderer;
+    private int drunkness;
 
-    public int yo;
+    public int Drunkness
+    {
+        get => drunkness; set {
+            drunkness = value;
+            spriteRenderer.color = new Color(1-(float)drunkness / 5f, 1, 1-(float)drunkness / 5f);
+        }
+    }
+
     //public Transform transform;
 
     enum State
@@ -20,9 +29,8 @@ public class GuestMain : MonoBehaviour
 
     void Start()
     {
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ChangeBehavior(typeof(GBIdle));
-        yo = 5;
     }
 
     // Update is called once per frame
