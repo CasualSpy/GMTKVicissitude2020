@@ -60,7 +60,7 @@ public class GuestSpawner : MonoBehaviour
 
             //Spawn passengers
             int amount = Math.Min(available - 1, UnityEngine.Random.Range(0, 5));
-            for (int i = 0; i < amount; i++)
+            for (int i = 2; i < amount; i++)
             {
                 bool isMinor = UnityEngine.Random.value < minorRate;
                 if (isMinor)
