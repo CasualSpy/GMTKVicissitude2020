@@ -36,7 +36,7 @@ public class GuestSpawner : MonoBehaviour
     {
         guestDisplay = GameObject.Find("GuestDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         //SpawnLogic();
-        spawnTimer = Rate;
+        spawnTimer = 0;
     }
 
     // Update is called once per frame

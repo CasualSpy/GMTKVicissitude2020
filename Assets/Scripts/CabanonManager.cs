@@ -5,6 +5,7 @@ using UnityEngine;
 public class CabanonManager : MonoBehaviour
 {
     GameObject Particles;
+    float cooldown;
     public struct Couple
     {
         public GuestMain first;
@@ -40,11 +41,12 @@ public class CabanonManager : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+        cooldown -= Time.deltaTime;
         if (occupied && timer < 0)
         {
             StopWoohoo();
         }
-        if (queue.Count > 0 && !occupied)
+        if (queue.Count > 0 && !occupied && cooldown < 0)
         {
             Woohoo(queue.Dequeue());
         }
@@ -107,6 +109,7 @@ public class CabanonManager : MonoBehaviour
 
 
         occupied = false;
+        cooldown = 5;
     }
 
     void ShowSprites(GuestMain guest, SpriteRenderer sr)

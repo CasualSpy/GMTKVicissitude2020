@@ -23,10 +23,10 @@ public class GBDancing : AbsGuestBehavior
             float rnd = Helpers.RandomRebelliousChoice(GetComponent<GuestMain>());
             bool isDriver = GetComponent<GuestMain>().isDriver;
 
-            if (rnd < 0.2 || rnd < 0.3 && isDriver)
-                ChangeBehavior(typeof(GBDancing));
-            else if (rnd < 0.4)
+            if (rnd < 0.2 || rnd < 0.1 && isDriver)
                 ChangeBehavior(typeof(GBGetDrink));
+            else if (rnd < 0.4)
+                ChangeBehavior(typeof(GBIdle));
             else if (rnd < 0.6)
                 ChangeBehavior(typeof(GBHorny));
             else if (rnd < 0.8)

@@ -30,9 +30,9 @@ public class GBIdle : AbsGuestBehavior
             bool isDriver = GetComponent<GuestMain>().isDriver;
 
             if (rnd < 0.2 || rnd < 0.3 && isDriver)
-                ChangeBehavior(typeof(GBDancing));
-            else if (rnd < 0.4)
                 ChangeBehavior(typeof(GBGetDrink));
+            else if (rnd < 0.4)
+                ChangeBehavior(typeof(GBDancing));
             else if (rnd < 0.6 || rnd < 0.5 && isDriver)
                 ChangeBehavior(typeof(GBHorny));
             else if (rnd < 0.8 || rnd < 0.7 && isDriver)

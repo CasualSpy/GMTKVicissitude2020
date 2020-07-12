@@ -719,7 +719,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 1, y: 3.58}
@@ -4943,7 +4943,7 @@ MonoBehaviour:
   MinorGameObject: {fileID: 8318557678348225570, guid: 87a6e6a16b6c8634f84fc6d955b15e66,
     type: 3}
   TargetQuantity: 20
-  Rate: 1
+  Rate: 5
   minorRate: 0.1
 --- !u!4 &1561285369
 Transform:
@@ -4972,6 +4972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bubble: {fileID: 9040466249118783055, guid: a88c25b94b233864c83770c7e9dbd963, type: 3}
+  isShowing: 0
 --- !u!114 &1561285371
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class ControlsManager : MonoBehaviour
 
         float shortestDistance = Mathf.Infinity;
 
-        foreach (var item in Physics2D.OverlapCircleAll(transform.position, 1f))
+        foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.5f))
         {
 
             float distanceWithItem = Vector3.Distance(transform.position, item.transform.position);
@@ -40,13 +40,13 @@ public class ControlsManager : MonoBehaviour
                 targetGuest = null;
                 targetObject = null;
                 shortestDistance = distanceWithItem;
-                if (targetGuest == null && item.tag == "Guest")
+                if (item.tag == "Guest")
                 {
                     //Found guest
                     targetGuest = item.gameObject;
                     continue;
                 }
-                if (targetObject == null && item.tag == "Object")
+                if (item.tag == "Object")
                 {
                     targetObject = item.gameObject;
                     continue;
