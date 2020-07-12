@@ -41,13 +41,10 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     public int Drunkness
     {
-        get => drunkness; set
-        {
-            drunkness = value;
-            spriteRenderer.color = new Color(1 - (float)drunkness / maxDrunkness, 1, 1 - (float)drunkness / maxDrunkness);
-
-        }
+        get;
+        set;
     }
+
 
     //public Transform transform;
 
@@ -73,6 +70,19 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
 
         animator = GetComponent<Animator>();
+    }
+
+    public void TakeKeys()
+    {
+        if (isDriver && hasKeys)
+        {
+            AbsGuestBehavior gb = GetComponent<AbsGuestBehavior>();
+            if (!gb.ShouldTakeKeys())
+            {
+
+            }
+            hasKeys = false;
+        }
     }
 
     public void MakeDriver()

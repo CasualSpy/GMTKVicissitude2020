@@ -21,27 +21,33 @@ public class GBDancing : AbsGuestBehavior
         if (timer < 0)
         {
             float rnd = Helpers.RandomRebelliousChoice(GetComponent<GuestMain>());
+            bool isDriver = GetComponent<GuestMain>().isDriver;
 
-            //36%
-            if (rnd < 0.2)
-                ChangeBehavior(typeof(GBIdle));
-            //28%
+            //Avg: 36% Driver: (51%)
+            if (rnd < 0.2 || rnd < 0.3 && isDriver)
+                ChangeBehavior(typeof(GBDancing));
+            //Avg: 28% Driver: (13%)
             else if (rnd < 0.4)
                 ChangeBehavior(typeof(GBGetDrink));
-            //20%
-            else if (rnd < 0.6)
+            //Avg: 20% Driver: (11%)
+            else if (rnd < 0.6 || rnd < 0.5 && isDriver)
                 ChangeBehavior(typeof(GBHorny));
-            //12%
-            else if (rnd < 0.8)
+            //Avg: 12% Driver: (16%)
+            else if (rnd < 0.8 || rnd < 0.7 && isDriver)
                 ChangeBehavior(typeof(GBRaiseVolume));
-            //4%
+            //Avg: 4% Driver: (9%)
             else
-                ChangeBehavior(typeof(GBSmokingDog));
+                ChangeBehavior(typeof(GBLeave));
         }
     }
 
     private void OnDestroy()
     {
         GetComponent<Animator>().SetBool("Dancing", false);
+    }
+
+    public override bool ShouldTakeKeys()
+    {
+        return false;
     }
 }

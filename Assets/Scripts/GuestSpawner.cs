@@ -76,11 +76,15 @@ public class GuestSpawner : MonoBehaviour
         GameObject go = Instantiate(GuestGameObject, new Vector3(-10, 0, 0), Quaternion.identity);
         GuestMain driver = go.GetComponent<GuestMain>();
         driver.MakeDriver();
+        SpriteRenderer sr = go.GetComponentInChildren<SpriteRenderer>();
+        sr.color = Helpers.GenerateColor();
     }
 
     private void SpawnGuest(int num)
     {
-        Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
+        GameObject go = Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
+        SpriteRenderer sr = go.GetComponentInChildren<SpriteRenderer>();
+        sr.color = Helpers.GenerateColor();
     }
 
     private void SpawnMinor(int num)
@@ -88,5 +92,7 @@ public class GuestSpawner : MonoBehaviour
         GameObject go = Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
         GuestMain minor = go.GetComponent<GuestMain>();
         minor.MakeMinor();
+        SpriteRenderer sr = go.GetComponentInChildren<SpriteRenderer>();
+        sr.color = Helpers.GenerateColor();
     }
 }

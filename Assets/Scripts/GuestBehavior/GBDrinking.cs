@@ -50,4 +50,9 @@ public class GBDrinking : AbsGuestBehavior
     {
         GetComponent<Animator>().SetBool("Drinking", false);
     }
+
+    public override bool ShouldTakeKeys()
+    {
+        return true;
+    }
 }

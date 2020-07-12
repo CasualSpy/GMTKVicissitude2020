@@ -82,4 +82,9 @@ public class GBPuking : AbsGuestBehavior
         ChangeBehavior(typeof(GBIdle));
         Ai.canMove = true;
     }
+
+    public override bool ShouldTakeKeys()
+    {
+        return true;
+    }
 }

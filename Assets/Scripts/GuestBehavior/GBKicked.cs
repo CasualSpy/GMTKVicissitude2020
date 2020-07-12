@@ -24,4 +24,9 @@ public class GBKicked : AbsGuestBehavior
             Destroy(gameObject);
         }
     }
+
+    public override bool ShouldTakeKeys()
+    {
+        return GetComponent<GuestMain>().Drunkness > 0f;
+    }
 }

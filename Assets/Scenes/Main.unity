@@ -3019,6 +3019,7 @@ MonoBehaviour:
   soundLevel: 0
   annoyance: 0
   annoyanceSpeed: 1
+  sprites: []
 --- !u!1 &1621827460
 GameObject:
   m_ObjectHideFlags: 0
