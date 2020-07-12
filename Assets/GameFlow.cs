@@ -67,7 +67,7 @@ public class GameFlow : MonoBehaviour
         GuestSpawner spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
         spawner.TargetQuantity = (int)Mathf.Lerp(10 , 50 , percentDone);
 
-        if (complaintManager.complaints.Count >= ComplaintsTillGameOver && currentState == GameState.Running)
+        if (complaintManager.TotalValue() >= ComplaintsTillGameOver && currentState == GameState.Running)
         {
             currentState = GameState.BadEnding;
             CallPolice();

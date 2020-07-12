@@ -8,13 +8,13 @@ public class GuestBubble : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetupBubble(string text, Vector3 position)
@@ -28,5 +28,16 @@ public class GuestBubble : MonoBehaviour
         GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 
+    private void OnDestroy()
+    {
+        GameObject master = GameObject.Find("Master");
+        if (master != null)
+        {
+            ComplaintManager cm = master.GetComponent<ComplaintManager>();
+            if (cm != null)
+                cm.isShowing = false;
+        }
+
+    }
 
 }

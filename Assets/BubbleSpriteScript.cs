@@ -20,4 +20,6 @@ public class BubbleSpriteScript : MonoBehaviour
     {
         Destroy(transform.parent.gameObject);
     }
+
+
 }
