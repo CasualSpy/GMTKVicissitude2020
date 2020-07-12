@@ -2916,6 +2916,7 @@ GameObject:
   - component: {fileID: 1561285368}
   - component: {fileID: 1561285370}
   - component: {fileID: 1561285371}
+  - component: {fileID: 1561285372}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -2987,6 +2988,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ef46871f367b0be4383746dd068c19c0, type: 3}
   - {fileID: 21300000, guid: bc491ed97025dab409c5df62d0454222, type: 3}
   - {fileID: 21300000, guid: 8495c5d48fbe5794a837b3d6a13c75ca, type: 3}
+--- !u!114 &1561285372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561285367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1b43cb14d8e104ebbed1bb55fa2162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  policeCar: {fileID: 4292751802342531409, guid: 7b589d3e9c445de40a17a17e6ce9e8da,
+    type: 3}
+  ComplaintsTillGameOver: 10
 --- !u!1 &1621827460
 GameObject:
   m_ObjectHideFlags: 0

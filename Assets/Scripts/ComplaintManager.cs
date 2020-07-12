@@ -22,7 +22,7 @@ public class ComplaintManager : MonoBehaviour
 
     private TMPro.TextMeshProUGUI complaintDisplay;
     Dictionary<Reasons, int> complaintValues;
-    List<Complaint> complaints;
+    public List<Complaint> complaints;
     // Start is called before the first frame update
     void Start()
     {
