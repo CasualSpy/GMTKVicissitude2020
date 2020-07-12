@@ -28,22 +28,36 @@ public class ControlsManager : MonoBehaviour
         targetGuest = null;
         targetObject = null;
 
+        float shortestDistance = Mathf.Infinity;
+
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 1f))
         {
-            if (targetGuest == null && item.tag == "Guest")
+
+            float distanceWithItem = Vector3.Distance(transform.position, item.transform.position);
+            if (distanceWithItem < shortestDistance && (item.tag == "Guest" || item.tag == "Object"))
             {
-                //Found guest
-                targetGuest = item.gameObject;
-                targetGuest.GetComponent<GuestMain>().isHighlighted = true;
-                break;
-            }
-            if (targetObject == null && item.tag == "Object")
-            {
-                targetObject = item.gameObject;
-                targetObject.GetComponent<ObjectMain>().isHighlighted = true;
-                break;
+                //found a closer object
+                targetGuest = null;
+                targetObject = null;
+                shortestDistance = distanceWithItem;
+                if (targetGuest == null && item.tag == "Guest")
+                {
+                    //Found guest
+                    targetGuest = item.gameObject;
+                    continue;
+                }
+                if (targetObject == null && item.tag == "Object")
+                {
+                    targetObject = item.gameObject;
+                    continue;
+                }
             }
         }
+
+        if (targetGuest != null)
+            targetGuest.GetComponent<GuestMain>().isHighlighted = true;
+        if (targetObject != null)
+            targetObject.GetComponent<ObjectMain>().isHighlighted = true;
 
 
         //Grab guest

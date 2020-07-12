@@ -7,9 +7,12 @@ public class GBDrinking : AbsGuestBehavior
 {
 
     float TimerDrinking;
+    GameObject drink;
 
     private void Start()
     {
+        drink = Resources.Load("drinkPrefab") as GameObject;
+
         Ai = GetComponent<IAstarAI>();
         Ai.destination = Helpers.SpotToHangOut();
 
@@ -25,9 +28,11 @@ public class GBDrinking : AbsGuestBehavior
 
     public void Update()
     {
+
         TimerDrinking -= Time.deltaTime;
         if (TimerDrinking < 0)
         {
+            SpawnDrink();
             GuestMain guestMain = GetComponent<GuestMain>();
             guestMain.Drunkness += 2;
 
@@ -49,6 +54,28 @@ public class GBDrinking : AbsGuestBehavior
     private void OnDestroy()
     {
         GetComponent<Animator>().SetBool("Drinking", false);
+
+    }
+
+    private void SpawnDrink()
+    {
+        Quaternion quaternion = Quaternion.identity;
+        switch (Random.Range(0, 3))
+        {
+            case 0:
+                quaternion = Quaternion.Euler(0, 0, 0);
+                break;
+            case 1:
+                quaternion = Quaternion.Euler(0, 0, 90);
+                break;
+            case 2:
+                quaternion = Quaternion.Euler(0, -0, -90);
+                break;
+            default:
+                break;
+        }
+
+        Instantiate(drink, transform.position, quaternion);
     }
 
     public override bool ShouldTakeKeys()
