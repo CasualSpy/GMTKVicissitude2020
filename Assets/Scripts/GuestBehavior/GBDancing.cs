@@ -45,9 +45,4 @@ public class GBDancing : AbsGuestBehavior
     {
         GetComponent<Animator>().SetBool("Dancing", false);
     }
-
-    public override bool ShouldTakeKeys()
-    {
-        return false;
-    }
 }

@@ -38,6 +38,11 @@ public class ControlsManager : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (targetGuest != null)
+                targetGuest.GetComponent<GuestMain>().TakeKeys();
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

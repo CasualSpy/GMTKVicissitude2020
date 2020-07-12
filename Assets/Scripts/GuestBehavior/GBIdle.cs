@@ -62,7 +62,7 @@ public class GBIdle : AbsGuestBehavior
         }
     }
 
-    public override bool ShouldTakeKeys()
+    public bool ShouldTakeKeys()
     {
         return GetComponent<GuestMain>().Drunkness > 0f;
     }

@@ -45,8 +45,4 @@ public class GBGetDrink : AbsGuestBehavior
         //}
     }
 
-    public override bool ShouldTakeKeys()
-    {
-        return GetComponent<GuestMain>().Drunkness > 0f;
-    }
 }

@@ -43,7 +43,7 @@ public class SoundLevel : MonoBehaviour, Plaintiff
 
     private void FixedUpdate()
     {
-        Debug.Log($"annoyance: {annoyance}");
+        //Debug.Log($"annoyance: {annoyance}");
         annoyance += soundLevel * Time.fixedDeltaTime * annoyanceSpeed;
         if (annoyance <= 2f)
         {
