@@ -11,7 +11,7 @@ public class SoundLevel : MonoBehaviour, Plaintiff
     ComplaintManager cm;
     Sprite[] spriteArray;
 
-    public List<Sprite> sprites = new List<Sprite>();
+    public Sprite[] sprites = new Sprite[4];
 
     // Start is called before the first frame update
     void Start()

@@ -3019,6 +3019,11 @@ MonoBehaviour:
   soundLevel: 0
   annoyance: 0
   annoyanceSpeed: 1
+  sprites:
+  - {fileID: 21300000, guid: 7391a63dd9b47494a804ca8f5fe5ddc2, type: 3}
+  - {fileID: 21300000, guid: ef46871f367b0be4383746dd068c19c0, type: 3}
+  - {fileID: 21300000, guid: bc491ed97025dab409c5df62d0454222, type: 3}
+  - {fileID: 21300000, guid: 8495c5d48fbe5794a837b3d6a13c75ca, type: 3}
 --- !u!1 &1621827460
 GameObject:
   m_ObjectHideFlags: 0
