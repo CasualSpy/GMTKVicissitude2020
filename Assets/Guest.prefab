@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 994483105251403357}
   - component: {fileID: 2986366969582539961}
   - component: {fileID: 6084974102205914198}
+  - component: {fileID: 8255691950041510474}
   m_Layer: 8
   m_Name: Guest
   m_TagString: Guest
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.5
+  radius: 30
   height: 2
   repathRate: 0.5
   canSearch: 1
@@ -259,6 +260,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!114 &8255691950041510474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787991864668016721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 1842858690206869878
+  updateError: 1
+  checkTime: 0.2
 --- !u!1 &6010234774860093304
 GameObject:
   m_ObjectHideFlags: 0
