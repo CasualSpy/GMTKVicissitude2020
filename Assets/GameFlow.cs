@@ -56,6 +56,8 @@ public class GameFlow : MonoBehaviour
         int hours = (int)Mathf.Repeat(Mathf.FloorToInt(nbOfMinutesElapsed / 60) + 21, 24);
 
         clock.text = $"{hours:00}" + ":" + $"{minutes:00}";
+        GuestSpawner spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
+        spawner.TargetQuantity = (int)Mathf.Lerp(10 , 50 , percentDone);
 
         if (complaintManager.complaints.Count >= ComplaintsTillGameOver && currentState == GameState.Running)
         {
