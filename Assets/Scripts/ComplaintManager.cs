@@ -46,8 +46,8 @@ public class ComplaintManager : MonoBehaviour
         answers = new Dictionary<Reasons, List<string>>();
         answers.Add(Reasons.Kickout, new List<string>() { "Yo I got kicked for no reason!" });
         answers.Add(Reasons.Unsafe_sex, new List<string>() {"Wait…. I forgot my condom at home.", "Get out of the shed!", "Uh oh! Herpes alert!", "Perverts!", "We don’t want party babies!"});
-        answers.Add(Reasons.Designated_driver_driving, new List<string>() {"You seriously gonna let them leave like that?", "They’re drunk driving!?", "Why’d you let them drive like that!?", "They can barely walk up right!?", "I saw them at the bar- they can’t drive!"});
-        answers.Add(Reasons.Designated_driver_keys_taken_early, new List<string>() {"But I’m a responsible driver!", "What gives dude?", "Don’t you trust me?"});
+        answers.Add(Reasons.Designated_driver_driving, new List<string>() {"You seriously gonna let them drive like that?", "They’re drunk driving!?", "Why’d you let them drive like that!?", "They can barely walk up right!?", "I saw them at the bar- they can’t drive!"});
+        answers.Add(Reasons.Designated_driver_keys_taken_early, new List<string>() {"But I’m a responsible driver!", "My keys! I wasn't planning to drink!", "Don’t you trust me?"});
         answers.Add(Reasons.Minor, new List<string>() {"You let my 13 year old drink???", "Y’all ‘bout to turn my daughter into a hoe!", "MY SON SHOULDN’T BE EXPOSED TO THIS DEGENERACY", "This isn’t a day care!"});
         answers.Add(Reasons.Noise, new List<string>() {"I’m working tomorrow! Freakin’ kids…", "Shut up!!!", "Normally I don’t sleep, but tonight I was actually trying too.", "I hate hearing the noise of a party I wasn’t invited too.", "I’m too old for this crappy music.", "Shut up you millennials!", "I need to sleep! I have an exam tomorrow!"});
         answers.Add(Reasons.Puke, new List<string>() {"That’s disgusting!", "I wanna lick it… never mind.", "I can see my own breakfast there…", "So unsanitary.", "I’m gonna be sick!", });
