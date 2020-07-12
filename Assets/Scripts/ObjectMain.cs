@@ -6,13 +6,22 @@ using System.Linq;
 public class ObjectMain : MonoBehaviour
 {
     public bool isHighlighted;
-    SpriteRenderer[] srs;
+
+    Material normalSpriteMaterial;
+    Material highlightMaterial;
+    List<SpriteRenderer> srs = new List<SpriteRenderer>();
     List<Vector3> scales;
 
     // Start is called before the first frame update
     void Start()
     {
-        srs = GetComponentsInChildren<SpriteRenderer>();
+        normalSpriteMaterial = Resources.Load("OurSpriteMaterial") as Material;
+        highlightMaterial = Resources.Load("HighlightMaterial") as Material;
+        srs = GetComponentsInChildren<SpriteRenderer>().ToList();
+
+        SpriteRenderer s = GetComponent<SpriteRenderer>();
+        if (s != null)
+            srs.Add(s);
         scales = srs.ToArray().Select(x => x.transform.localScale).ToList();
     }
 
@@ -22,19 +31,21 @@ public class ObjectMain : MonoBehaviour
         if (isHighlighted)
         {
 
-            for (int i = 0; i < srs.Length; i++)
+            for (int i = 0; i < srs.Count; i++)
             {
                 Vector3 scale = scales[i];
                 srs[i].transform.localScale = new Vector3(scale.x * 1.2f, scale.y * 1.2f, scale.z * 1.2f);
+                srs[i].material = highlightMaterial;
             }
             isHighlighted = false;
         }
         else
         {
-            for (int i = 0; i < srs.Length; i++)
+            for (int i = 0; i < srs.Count; i++)
             {
                 Vector3 scale = scales[i];
                 srs[i].transform.localScale = scale;
+                srs[i].material = normalSpriteMaterial;
             }
         }
 
