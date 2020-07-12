@@ -21,6 +21,7 @@ public class CabanonManager : MonoBehaviour
     bool occupied;
     Couple occupants;
     float timer;
+    public bool isUnsafe;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,7 @@ public class CabanonManager : MonoBehaviour
         firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
         secondGuest.GetComponent<CircleCollider2D>().enabled = false;
         secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        isUnsafe = true;
 
         Particles.SetActive(true);
     }
@@ -74,9 +76,12 @@ public class CabanonManager : MonoBehaviour
         firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
         secondGuest.GetComponent<CircleCollider2D>().enabled = true;
         secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        firstGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
+        GuestMain firstMain = firstGuest.GetComponent<GuestMain>();
+        firstMain.ChangeBehavior(typeof(GBIdle));
         secondGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
 
+        if (isUnsafe)
+            GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(firstMain, ComplaintManager.Reasons.Unsafe_sex));
 
         occupied = false;
     }
