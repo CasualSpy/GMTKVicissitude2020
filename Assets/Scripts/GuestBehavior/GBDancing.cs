@@ -23,19 +23,14 @@ public class GBDancing : AbsGuestBehavior
             float rnd = Helpers.RandomRebelliousChoice(GetComponent<GuestMain>());
             bool isDriver = GetComponent<GuestMain>().isDriver;
 
-            //Avg: 36% Driver: (51%)
             if (rnd < 0.2 || rnd < 0.3 && isDriver)
                 ChangeBehavior(typeof(GBDancing));
-            //Avg: 28% Driver: (13%)
             else if (rnd < 0.4)
                 ChangeBehavior(typeof(GBGetDrink));
-            //Avg: 20% Driver: (11%)
-            else if (rnd < 0.6 || rnd < 0.5 && isDriver)
+            else if (rnd < 0.6)
                 ChangeBehavior(typeof(GBHorny));
-            //Avg: 12% Driver: (16%)
-            else if (rnd < 0.8 || rnd < 0.7 && isDriver)
+            else if (rnd < 0.8)
                 ChangeBehavior(typeof(GBRaiseVolume));
-            //Avg: 4% Driver: (9%)
             else
                 ChangeBehavior(typeof(GBLeave));
         }
