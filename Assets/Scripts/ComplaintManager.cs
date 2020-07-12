@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+using Random = UnityEngine.Random;
 
 public class ComplaintManager : MonoBehaviour
 {
@@ -113,6 +115,9 @@ public class ComplaintManager : MonoBehaviour
         {
             //Spawn complaint bubble
             SummonBubble(ComplaintText[Random.Range(0, ComplaintText.Count)]);
+        } else
+        {
+            SummonBubble(Enum.GetName(typeof(Reasons), complaint.reason));
         }
 
         Debug.Log("Complaint added");
