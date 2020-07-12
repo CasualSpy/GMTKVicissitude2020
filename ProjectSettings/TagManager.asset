@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Guest
   - Zone
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - Obstacle
   - zone
-  - 
+  - playerbound
   - 
   - 
   - 
