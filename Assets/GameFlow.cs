@@ -51,7 +51,7 @@ public class GameFlow : MonoBehaviour
             GameTimer += Time.deltaTime;
 
         float percentDone = GameTimer / GameLength;
-        float nbOfMinutesElapsed = Mathf.Lerp(0, 400, percentDone);
+        float nbOfMinutesElapsed = Mathf.Lerp(0, 360, percentDone);
         int minutes = Mathf.FloorToInt(Mathf.Repeat(nbOfMinutesElapsed, 60));
         int hours = (int)Mathf.Repeat(Mathf.FloorToInt(nbOfMinutesElapsed / 60) + 21, 24);
 
@@ -64,6 +64,7 @@ public class GameFlow : MonoBehaviour
         } else if (percentDone >= 1 && currentState == GameState.Running)
         {
             currentState = GameState.GoodEnding;
+            ShowGoodEnding();
         }
     }
 
@@ -77,11 +78,6 @@ public class GameFlow : MonoBehaviour
         {
             item.enabled = true;
         }
-    }
-
-    void PartyIsDone()
-    {
-
     }
 
     /// <summary>
@@ -102,6 +98,11 @@ public class GameFlow : MonoBehaviour
     void ShowBadEnding()
     {
         (Resources.FindObjectsOfTypeAll(typeof(GameObject)).First(o => o.name == "BadScreen") as GameObject).SetActive(true);
+    }
+
+    void ShowGoodEnding()
+    {
+        (Resources.FindObjectsOfTypeAll(typeof(GameObject)).First(o => o.name == "GoodScreen") as GameObject).SetActive(true);
     }
 
     public void ReloadScene()
