@@ -58,6 +58,8 @@ public class Helpers
         "#ffa89a", "#c15734", "#ff5f01", "#ffa66b", "#867466", "#dec2a1", "#957206", "#f5c000", "#9db700", "#a4d483", "#00ec2a", "#008f5b", "#00e4bb", "#008587", "#00d9ff", "#96c8ff", "#3a78c3", "#6d80ff", "#918ea2", "#e7afff", "#d554ff", "#ff67c8", "#ffaac8", "#eb1241"
     };
 
+    static List<string> ColourBackups = new List<string> { "#ffa89a", "#c15734", "#ff5f01", "#ffa66b", "#867466", "#dec2a1", "#957206", "#f5c000", "#9db700", "#a4d483", "#00ec2a", "#008f5b", "#00e4bb", "#008587", "#00d9ff", "#96c8ff", "#3a78c3", "#6d80ff", "#918ea2", "#e7afff", "#d554ff", "#ff67c8", "#ffaac8", "#eb1241"};
+
     public static Color GenerateColor()
     {
         if (ColourValues.Count > 0)
@@ -70,6 +72,10 @@ public class Helpers
                 return color;
             }
         }
+        string backupString = ColourBackups[Random.Range(0, ColourBackups.Count)];
+        Color backup;
+        if (ColorUtility.TryParseHtmlString(backupString, out backup))
+            return backup;
         return Color.white;
     }
 
