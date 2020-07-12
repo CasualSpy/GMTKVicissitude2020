@@ -1,18 +1,43 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GBRaiseVolume : MonoBehaviour
+public class GBRaiseVolume : AbsGuestBehavior
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
-        
+        Ai = GetComponent<IAstarAI>();
+        Ai.destination = GameObject.Find("Jukebox").transform.position;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        
+        if (collision.transform.name == "Jukebox")
+        {
+            GameObject.Find("Master").GetComponent<SoundLevel>().Increase();
+            ChangeBehavior(typeof(GBIdle));
+        }
+    }
+
+    public void Update()
+    {
+        //TimerIdle -= Time.deltaTime;
+
+
+        //if (TimerIdle < 0)
+        //{
+
+        //    ChangeBehavior(typeof(GBLeave));
+        //}
+        //else if (Ai.reachedDestination)
+        //{
+        //    if (Random.Range(1, 4) == 1)
+        //        Ai.destination = SpotInsideHouse();
+        //    else
+        //        Ai.destination = Random.insideUnitSphere + transform.position;
+        //}
     }
 }

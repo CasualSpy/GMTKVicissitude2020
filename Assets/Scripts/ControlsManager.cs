@@ -24,7 +24,7 @@ public class ControlsManager : MonoBehaviour
     {
         AnimatorManage();
 
-
+        targetGuest = null;
 
 
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
@@ -62,6 +62,16 @@ public class ControlsManager : MonoBehaviour
             if (targetGuest != null)
             {
                 targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBKicked));
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
+            {
+                if (item.name == "Jukebox")
+                {
+                    GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+                }
             }
         }
     }
