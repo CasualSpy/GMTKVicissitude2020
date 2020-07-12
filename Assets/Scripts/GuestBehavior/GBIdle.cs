@@ -29,13 +29,15 @@ public class GBIdle : AbsGuestBehavior
             float rnd = Helpers.RandomRebelliousChoice(gm);
             bool isDriver = GetComponent<GuestMain>().isDriver;
 
-            if (rnd < 0.2 || rnd < 0.3 && isDriver)
+            if (isDriver && gameObject.GetComponent<GuestMain>().Drunkness > 0 && Random.value < 0.25)
+                ChangeBehavior(typeof(GBLeave));
+            else if (rnd < 0.2 || rnd < 0.3 && isDriver)
                 ChangeBehavior(typeof(GBGetDrink));
             else if (rnd < 0.4)
                 ChangeBehavior(typeof(GBDancing));
-            else if (rnd < 0.6 || rnd < 0.5 && isDriver)
+            else if (rnd < 0.6)
                 ChangeBehavior(typeof(GBHorny));
-            else if (rnd < 0.8 || rnd < 0.7 && isDriver)
+            else if (rnd < 0.8)
                 ChangeBehavior(typeof(GBRaiseVolume));
             else
                 ChangeBehavior(typeof(GBLeave));
