@@ -28,5 +28,9 @@ public class GuestBubble : MonoBehaviour
         GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 
+    private void OnDestroy()
+    {
+        GameObject.Find("Master").GetComponent<ComplaintManager>().isShowing = false;
+    }
 
 }

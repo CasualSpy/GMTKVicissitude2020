@@ -22,7 +22,10 @@ public class ComplaintManager : MonoBehaviour
 
     private TMPro.TextMeshProUGUI complaintDisplay;
     Dictionary<Reasons, int> complaintValues;
+    Queue<string> ComplaintText;
     public List<Complaint> complaints;
+    public bool isShowing;
+    Dictionary<Reasons, List<string>> answers;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,27 @@ public class ComplaintManager : MonoBehaviour
 
         complaintDisplay = GameObject.Find("ComplaintDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         complaintDisplay.text = $"complaints / 00";
+        isShowing = false;
+        ComplaintText = new Queue<string>();
+        answers = new Dictionary<Reasons, List<string>>();
+        answers.Add(Reasons.Kickout, new List<string>() { "Yo I got kicked for no reason!" });
+        answers.Add(Reasons.Unsafe_sex, new List<string>() {"Wait…. I forgot my condom at home.", "Get out of the shed!", "Uh oh! Herpes alert!", "Perverts!", "We don’t want party babies!"});
+        answers.Add(Reasons.Designated_driver_driving, new List<string>() {"You seriously gonna let them leave like that?", "They’re drunk driving!?", "Why’d you let them drive like that!?", "They can barely walk up right!?", "I saw them at the bar- they can’t drive!"});
+        answers.Add(Reasons.Designated_driver_keys_taken_early, new List<string>() {"But I’m a responsible driver!", "What gives dude?", "Don’t you trust me?"});
+        answers.Add(Reasons.Minor, new List<string>() {"You let my 13 year old drink???", "Y’all ‘bout to turn my daughter into a hoe!", "MY SON SHOULDN’T BE EXPOSED TO THIS DEGENERACY", "This isn’t a day care!"});
+        answers.Add(Reasons.Noise, new List<string>() {"I’m working tomorrow! Freakin’ kids…", "Shut up!!!", "Normally I don’t sleep, but tonight I was actually trying too.", "I hate hearing the noise of a party I wasn’t invited too.", "I’m too old for this crappy music.", "Shut up you millennials!", "I need to sleep! I have an exam tomorrow!"});
+        answers.Add(Reasons.Puke, new List<string>() {"That’s disgusting!", "I wanna lick it… never mind.", "I can see my own breakfast there…", "So unsanitary.", "I’m gonna be sick!", });
+    }
+
+    private void Update()
+    {
+        
+        if (ComplaintText.Count != 0 && !isShowing)
+        {
+            //Spawn complaint bubble
+            SummonBubble(ComplaintText.Dequeue());
+            isShowing = true;
+        } 
     }
 
     public enum Reasons
@@ -53,76 +77,20 @@ public class ComplaintManager : MonoBehaviour
         Puke
     }
 
-
     public void AddComplaint(Complaint complaint)
     {
         complaints.Add(complaint);
-        complaintDisplay.text = $"complaints / {complaints.Count:00}";
+        complaintDisplay.text = $"complaints / {TotalValue():00}";
 
-        List<string> ComplaintText = new List<string>();
-        switch (complaint.reason)
+        List<string> complaintAnswers;
+        if (answers.TryGetValue(complaint.reason, out complaintAnswers))
         {
-            case Reasons.Kickout:
-                ComplaintText.Add("Yo I got kicked for no reason!");
-                break;
-            case Reasons.Unsafe_sex:
-                ComplaintText.Add("Wait…. I forgot my condom at home.");
-                ComplaintText.Add("Get out of the shed!");
-                ComplaintText.Add("Uh oh! Herpes alert!");
-                ComplaintText.Add("Perverts!");
-                ComplaintText.Add("We don’t want party babies!");
-                break;
-            case Reasons.Consent:
-                break;
-            case Reasons.Designated_driver_driving:
-                ComplaintText.Add("You seriously gonna let them leave like that?");
-                ComplaintText.Add("They’re drunk driving!?");
-                ComplaintText.Add("Why’d you let them drive like that!?");
-                ComplaintText.Add("They can barely walk up right!?");
-                ComplaintText.Add("I saw them at the bar- they can’t drive!");
-                break;
-            case Reasons.Designated_driver_keys_taken_early:
-                ComplaintText.Add("But I’m a responsible driver!");
-                ComplaintText.Add("What gives dude?");
-                ComplaintText.Add("Don’t you trust me?");
-                break;
-            case Reasons.Minor:
-                ComplaintText.Add("You let my 13 year old drink???");
-                ComplaintText.Add("Y’all ‘bout to turn my daughter into a hoe!");
-                ComplaintText.Add("MY SON SHOULDN’T BE EXPOSED TO THIS DEGENERACY");
-                ComplaintText.Add("This isn’t a day care!");
-                break;
-            case Reasons.Dirty_house:
-                break;
-            case Reasons.Noise:
-                ComplaintText.Add("I’m working tomorrow! Freakin’ kids…");
-                ComplaintText.Add("Shut up!!!");
-                ComplaintText.Add("Normally I don’t sleep, but tonight I was actually trying too.");
-                ComplaintText.Add("I hate hearing the noise of a party I wasn’t invited too.");
-                ComplaintText.Add("I’m too old for this crappy music.");
-                ComplaintText.Add("Shut up you millennials!");
-                ComplaintText.Add("I need to sleep! I have an exam tomorrow!");
-                break;
-            case Reasons.Puke:
-                ComplaintText.Add("That’s disgusting!");
-                ComplaintText.Add("I wanna lick it… never mind.");
-                ComplaintText.Add("I can see my own breakfast there…");
-                ComplaintText.Add("So unsanitary.");
-                ComplaintText.Add("I’m gonna be sick!");
-                break;
-            default:
-                break;
+            ComplaintText.Enqueue(complaintAnswers[Random.Range(0, complaintAnswers.Count)]);
         }
-
-        if (ComplaintText.Count != 0)
+        else
         {
-            //Spawn complaint bubble
-            SummonBubble(ComplaintText[Random.Range(0, ComplaintText.Count)]);
-        } else
-        {
-            SummonBubble(Enum.GetName(typeof(Reasons), complaint.reason));
+            ComplaintText.Enqueue(complaint.reason.ToString().Replace('_', ' '));
         }
-
     }
 
     public int TotalValue()
