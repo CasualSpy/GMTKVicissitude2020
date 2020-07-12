@@ -60,9 +60,17 @@ public class CabanonManager : MonoBehaviour
         GameObject firstGuest = c.first.gameObject;
         GameObject secondGuest = c.second.gameObject;
         firstGuest.GetComponent<CircleCollider2D>().enabled = false;
-        firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        SpriteRenderer[] firstSrs = firstGuest.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in firstSrs)
+        {
+            sr.enabled = false;
+        }
         secondGuest.GetComponent<CircleCollider2D>().enabled = false;
-        secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        SpriteRenderer[] secondSrs = secondGuest.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in secondSrs)
+        {
+            sr.enabled = false;
+        }
         Particles.SetActive(true);
     }
 
@@ -78,14 +86,34 @@ public class CabanonManager : MonoBehaviour
         GameObject secondGuest = occupants.second.gameObject;
 
         firstGuest.GetComponent<CircleCollider2D>().enabled = true;
-        firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
         secondGuest.GetComponent<CircleCollider2D>().enabled = true;
-        secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
         GuestMain firstMain = firstGuest.GetComponent<GuestMain>();
+        GuestMain secondMain = secondGuest.GetComponent<GuestMain>();
+
+        SpriteRenderer[] firstSrs = firstGuest.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in firstSrs)
+        {
+            ShowSprites(firstMain, sr);
+        }
+        secondGuest.GetComponent<CircleCollider2D>().enabled = false;
+        SpriteRenderer[] secondSrs = secondGuest.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var sr in secondSrs)
+        {
+            ShowSprites(secondMain, sr);
+        }
         firstMain.ChangeBehavior(typeof(GBIdle));
-        secondGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
+        secondMain.ChangeBehavior(typeof(GBIdle));
 
 
         occupied = false;
+    }
+
+    void ShowSprites(GuestMain guest, SpriteRenderer sr)
+    {
+            if (sr.gameObject.name == "Key")
+                sr.enabled = guest.HasKeys;
+            else
+                sr.enabled = true;
     }
 }
