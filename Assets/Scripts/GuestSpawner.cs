@@ -34,7 +34,7 @@ public class GuestSpawner : MonoBehaviour
     void Start()
     {
         guestDisplay = GameObject.Find("GuestDisplay").GetComponent<TMPro.TextMeshProUGUI>();
-        SpawnLogic();
+        //SpawnLogic();
         spawnTimer = Rate;
     }
 
