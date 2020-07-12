@@ -14,6 +14,9 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     private SpriteRenderer keySpriteRenderer;
 
+    Material normalSpriteMaterial;
+    Material highlightMaterial;
+
     private int drunkness;
     public const int maxDrunkness = 4;
     public bool isDriver;
@@ -69,6 +72,9 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     void Start()
     {
+        normalSpriteMaterial = Resources.Load("OurSpriteMaterial") as Material;
+        highlightMaterial = Resources.Load("HighlightMaterial") as Material;
+
         keySpriteRenderer = transform.Find("Key").GetComponent<SpriteRenderer>();
 
         spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
@@ -125,11 +131,14 @@ public class GuestMain : MonoBehaviour, Plaintiff
         if (isHighlighted)
         {
             spriteRenderer.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            //transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+            spriteRenderer.material = highlightMaterial;
             isHighlighted = false;
         }
         else
         {
             GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(1, 1, 1);
+            spriteRenderer.material = normalSpriteMaterial;
         }
     }
 
