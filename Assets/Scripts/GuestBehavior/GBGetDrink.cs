@@ -44,4 +44,9 @@ public class GBGetDrink : AbsGuestBehavior
         //        Ai.destination = Random.insideUnitSphere + transform.position;
         //}
     }
+
+    public override bool ShouldTakeKeys()
+    {
+        return GetComponent<GuestMain>().Drunkness > 0f;
+    }
 }

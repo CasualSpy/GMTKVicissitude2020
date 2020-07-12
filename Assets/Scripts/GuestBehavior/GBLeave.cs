@@ -21,4 +21,8 @@ public class GBLeave : AbsGuestBehavior
         }
     }
 
+    public override bool ShouldTakeKeys()
+    {
+        return GetComponent<GuestMain>().Drunkness > 0f;
+    }
 }
