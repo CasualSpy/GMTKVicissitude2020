@@ -70,25 +70,21 @@ public class ControlsManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (targetGuest != null)
-            {
                 targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBKicked));
-            }
-        }
-
-        //Other interactions with guests
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (targetGuest != null)
-                targetGuest.GetComponent<GuestMain>().TakeKeys();
         }
 
         //Interactions with objects
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (targetObject.name == "Jukebox")
-                GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
-            if (targetObject.name == "CondomPile")
-                GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
+            if (targetGuest != null)
+                targetGuest.GetComponent<GuestMain>().TakeKeys();
+            if (targetObject != null)
+            {
+                if (targetObject.name == "Jukebox")
+                    GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+                if (targetObject.name == "CondomPile")
+                    GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
+            }
         }
     }
 
