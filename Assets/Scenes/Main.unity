@@ -4972,6 +4972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bubble: {fileID: 9040466249118783055, guid: a88c25b94b233864c83770c7e9dbd963, type: 3}
+  isShowing: 0
 --- !u!114 &1561285371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6337,6 +6338,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 302420017284626502, guid: c885ab5b537f4af449ea6b9a51d5021d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 302420017284626502, guid: c885ab5b537f4af449ea6b9a51d5021d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3789080027822353996, guid: c885ab5b537f4af449ea6b9a51d5021d,
         type: 3}
