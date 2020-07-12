@@ -9,6 +9,7 @@ public class ControlsManager : MonoBehaviour
     public float speed;
     bool isGrabbing = false;
     GameObject targetGuest = null;
+    GameObject targetObject = null;
 
     Animator animator;
 
@@ -25,20 +26,26 @@ public class ControlsManager : MonoBehaviour
         AnimatorManage();
 
         targetGuest = null;
-
+        targetObject = null;
 
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
         {
-            if (item.tag == "Guest")
+            if (targetGuest == null && item.tag == "Guest")
             {
                 //Found guest
                 targetGuest = item.gameObject;
                 targetGuest.GetComponent<GuestMain>().isHighlighted = true;
                 break;
             }
+            if (targetObject == null && item.tag == "Object")
+            {
+                targetObject = item.gameObject;
+                targetObject.GetComponent<ObjectMain>().isHighlighted = true;
+                break;
+            }
         }
 
-
+        //Grab guest
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrabbing)
@@ -57,20 +64,36 @@ public class ControlsManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.C))
+
+        //Kick guest
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (targetGuest != null)
             {
                 targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBKicked));
             }
         }
-        if (Input.GetKeyDown(KeyCode.X))
+
+        //Other interactions with guests
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
+
+        //Interactions with objects
+        if (Input.GetKeyDown(KeyCode.E))
         {
             foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
             {
                 if (item.name == "Jukebox")
                 {
                     GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+                    break;
+                }
+                if (item.name == "CondomPile")
+                {
+                    GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
+                    break;
                 }
             }
         }

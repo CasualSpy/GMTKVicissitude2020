@@ -73,10 +73,6 @@ public class SoundLevel : MonoBehaviour, Plaintiff
         {
             windowRenderer.sprite = sprites[0];
         }
-
-
-
-
     }
 
     public void Complain(ComplaintManager.Reasons reason)
