@@ -28,7 +28,7 @@ public class ControlsManager : MonoBehaviour
         targetGuest = null;
         targetObject = null;
 
-        foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
+        foreach (var item in Physics2D.OverlapCircleAll(transform.position, 1f))
         {
             if (targetGuest == null && item.tag == "Guest")
             {
