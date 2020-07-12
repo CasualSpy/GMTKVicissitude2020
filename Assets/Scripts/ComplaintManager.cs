@@ -38,7 +38,6 @@ public class ComplaintManager : MonoBehaviour
 
         complaintDisplay = GameObject.Find("ComplaintDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         complaintDisplay.text = $"complaints / 00";
-        Debug.Log(complaints.Count);
     }
 
     public enum Reasons
@@ -61,7 +60,6 @@ public class ComplaintManager : MonoBehaviour
         complaintDisplay.text = $"complaints / {complaints.Count:00}";
 
         List<string> ComplaintText = new List<string>();
-        //ComplaintText.Add("");
         switch (complaint.reason)
         {
             case Reasons.Kickout:
@@ -125,7 +123,6 @@ public class ComplaintManager : MonoBehaviour
             SummonBubble(Enum.GetName(typeof(Reasons), complaint.reason));
         }
 
-        Debug.Log("Complaint added");
     }
 
     public int TotalValue()

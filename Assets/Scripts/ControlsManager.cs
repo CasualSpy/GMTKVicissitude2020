@@ -45,11 +45,6 @@ public class ControlsManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (targetGuest != null)
-                targetGuest.GetComponent<GuestMain>().TakeKeys();
-        }
 
         //Grab guest
         if (Input.GetKeyDown(KeyCode.Space))
@@ -83,25 +78,17 @@ public class ControlsManager : MonoBehaviour
         //Other interactions with guests
         if (Input.GetKeyDown(KeyCode.F))
         {
-
+            if (targetGuest != null)
+                targetGuest.GetComponent<GuestMain>().TakeKeys();
         }
 
         //Interactions with objects
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
-            {
-                if (item.name == "Jukebox")
-                {
-                    GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
-                    break;
-                }
-                if (item.name == "CondomPile")
-                {
-                    GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
-                    break;
-                }
-            }
+            if (targetObject.name == "Jukebox")
+                GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+            if (targetObject.name == "CondomPile")
+                GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
         }
     }
 
