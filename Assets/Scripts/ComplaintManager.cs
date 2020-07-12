@@ -33,8 +33,8 @@ public class ComplaintManager : MonoBehaviour
         complaintValues = new Dictionary<Reasons, int>();
         complaintValues.Add(Reasons.Designated_driver_driving, 2);
         complaintValues.Add(Reasons.Unsafe_sex, 2);
-        complaintValues.Add(Reasons.Consent, 2);
-        complaintValues.Add(Reasons.Dirty_house, 1);
+        complaintValues.Add(Reasons.Designated_driver_keys_taken_early, 1);
+        complaintValues.Add(Reasons.Puke, 1);
         complaintValues.Add(Reasons.Kickout, 1);
         complaintValues.Add(Reasons.Minor, 1);
         complaintValues.Add(Reasons.Noise, 1);
@@ -95,7 +95,12 @@ public class ComplaintManager : MonoBehaviour
 
     public int TotalValue()
     {
-        return complaints.Aggregate(0, (acc, x) => acc + complaintValues[x.reason]);
+        int total = 0;
+        int value;
+        foreach (var complaint in complaints)
+            if (complaintValues.TryGetValue(complaint.reason, out value))
+                total += value;
+        return total;
     }
 
     void SummonBubble(string text)
