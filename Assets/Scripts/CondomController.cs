@@ -33,7 +33,7 @@ public class CondomController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         CabanonManager cm = collision.gameObject.GetComponent<CabanonManager>();
-        if (collision.transform.name == "PorteCabanon" && hasCondom && cm.isUnsafe)
+        if (collision.transform.name == "PorteCabanon" && hasCondom && !cm.protectionApplied)
         {
             GiveCondom(cm);
         }
@@ -42,6 +42,6 @@ public class CondomController : MonoBehaviour
     void GiveCondom (CabanonManager cm)
     {
         HasCondom = false;
-        cm.isUnsafe = false;
+        cm.protectionApplied = true;
     }
 }
