@@ -85,19 +85,10 @@ public class ControlsManager : MonoBehaviour
         //Interactions with objects
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))
-            {
-                if (item.name == "Jukebox")
-                {
-                    GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
-                    break;
-                }
-                if (item.name == "CondomPile")
-                {
-                    GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
-                    break;
-                }
-            }
+            if (targetObject.name == "Jukebox")
+                GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+            if (targetObject.name == "CondomPile")
+                GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
         }
     }
 

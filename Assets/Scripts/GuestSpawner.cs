@@ -8,6 +8,7 @@ public class GuestSpawner : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject GuestGameObject;
+    public GameObject MinorGameObject;
     private TMPro.TextMeshProUGUI guestDisplay;
     public int TargetQuantity = 10;
     public float Rate = 10;
@@ -89,7 +90,7 @@ public class GuestSpawner : MonoBehaviour
 
     private void SpawnMinor(int num)
     {
-        GameObject go = Instantiate(GuestGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
+        GameObject go = Instantiate(MinorGameObject, new Vector3(-10, (num + 1) * 0.3f, 0), Quaternion.identity);
         GuestMain minor = go.GetComponent<GuestMain>();
         minor.MakeMinor();
         SpriteRenderer sr = go.GetComponentInChildren<SpriteRenderer>();

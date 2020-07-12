@@ -41,6 +41,7 @@ public class GBPuking : AbsGuestBehavior
         if (PukeTimer < 0 && !isPuking)
         {
             //BLERGH
+            PlayPukeSound();
             GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(GetComponent<GuestMain>(), ComplaintManager.Reasons.Puke));
             isPuking = true;
             Instantiate(Puke, transform.position, Quaternion.identity);
@@ -64,7 +65,7 @@ public class GBPuking : AbsGuestBehavior
         {
             //Is in toilet
             //BLERGH
-            
+            PlayPukeSound();
             isPuking = true;
             GameObject.Find("Player").GetComponent<ControlsManager>().Release();
             transform.position = GameObject.Find("Toilet").transform.position;
@@ -86,5 +87,10 @@ public class GBPuking : AbsGuestBehavior
     public new bool ShouldTakeKeys()
     {
         return true;
+    }
+
+    void PlayPukeSound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }

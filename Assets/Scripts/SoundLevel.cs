@@ -17,8 +17,10 @@ public class SoundLevel : MonoBehaviour, Plaintiff
     // Start is called before the first frame update
     void Start()
     {
+
         soundLevel = 0f;
         annoyance = 0f;
+        ChangeVolume();
 
         spriteArray = new Sprite[4];
 
@@ -34,14 +36,22 @@ public class SoundLevel : MonoBehaviour, Plaintiff
 
     public void Increase()
     {
-        soundLevel += soundLevel < 5f ? 1f : 0f;
+        soundLevel += soundLevel < 1f ? 0.25f : 0f;
+        ChangeVolume();
     }
 
     public void Lower()
     {
         soundLevel = 0f;
+        ChangeVolume();
     }
 
+    public void ChangeVolume()
+    {
+        AudioSource audio = GameObject.Find("Master").GetComponent<AudioSource>();
+        Debug.Log($"sound{Mathf.Lerp(0.15f, 0.7f, soundLevel)}");
+        audio.volume = Mathf.Lerp(0.15f, 0.7f, soundLevel);
+    }
     private void FixedUpdate()
     {
         if (soundLevel > 0)

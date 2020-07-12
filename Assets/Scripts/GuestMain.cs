@@ -47,13 +47,16 @@ public class GuestMain : MonoBehaviour, Plaintiff
         get;
         set;
     }
-    public bool HasKeys { get => hasKeys; set {
+    public bool HasKeys
+    {
+        get => hasKeys; set
+        {
             if (!keySpriteRenderer)
                 keySpriteRenderer = transform.Find("Key").GetComponent<SpriteRenderer>();
             keySpriteRenderer.enabled = value;
-            hasKeys = value; 
+            hasKeys = value;
         }
-        }
+    }
 
 
     //public Transform transform;
@@ -78,7 +81,11 @@ public class GuestMain : MonoBehaviour, Plaintiff
             spriteRenderer.sprite = minorSprite;
         else if (isDriver)
             spriteRenderer.sprite = driverSprite;
-        ChangeBehavior(typeof(GBIdle));
+
+        if (isMinor)
+            ChangeBehavior(typeof(GBMinor));
+        else
+            ChangeBehavior(typeof(GBIdle));
 
 
         animator = GetComponent<Animator>();
@@ -106,6 +113,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
     public void MakeMinor()
     {
         isMinor = true;
+
     }
 
     // Update is called once per frame
@@ -145,7 +153,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     public void AnimatorManager()
     {
-        
+
         animator.SetBool("Walking", Ai.velocity.magnitude > 0.7f);
 
 
