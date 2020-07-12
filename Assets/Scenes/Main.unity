@@ -519,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+v1fk4KVwIAAP8EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziVjOynFvbVASA8EJqSTiy/CWmMNsuSR5PA1/PeuZBu77pQL0u6+3fd2V74SLk0JqVV6qTlbKQbk+4i4M/ky6pwvcKJ7Jbf8Am3MB2c2d0HUx7xRyxXaQwczqgCrefpD7oULDtBYSZ4pXSzYHmbKWIPmjAoD6NLKOrRE03VETvg3jh3kjKfomztd8BQHoxseU5AWdC80fAhj95vEDaQF1PGVTAUtSmCOfAeL2gJhHSZRVhMRPDgRqRKCm4YVsefSq96WOWhwshmnKNIzifCaA9/ntrncsessM2AbTpqe51xjr+qk5KeqG1hQc6iJfVJRuTLR14knVSdd/eMfh96daVW8tHXDwNWwOU8Pb/ScUmN7He6b5x3x0PfnSMWB7gR85CBf1VKrSjJ0Wl05aGUgmnfXu7RZDumhs9dUB8aq7BoeDKbjNNy8+tNM8GLnG/9UG7ZC+Xb7LQCNo/mFhP2OmCYFWh2L3wbe6b6/TI3jmWtj0dWolI7eTlXahZKF75lTU9mZ0hJ0P0MJkgp73mAeO5zhwPd/1DN176ap3vja5zCAeHMXHwQD10Yd79MyuTquwOTrygouoWu1c7xio2ZKynrF+pJa2LbSGU17sH3F2d+7RWhKszikGQSw2z1Op+PgaRJPHqfRlMXZhLGI+OXjEnVSsamJNu3BsckuucRFaz8no6WmpV93pulxyS+F6hPkMlPbVAPIdZ3izhw0VsGHyRaMY4e2YC2XfuLkmhCh0gOw5F4z8VIXJ6tp0mVJSMk/lXWWhMz8ByQhN3L7A1BLAwQUAAAICAAAmJ/rsrr3I20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UmJyYpqlYWJaqkFqUpKxhYWugYmZpZmxhZFFimWaWUqKkVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/r9X5OClcCAAD/BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rsrr3I20AAAB4AAAACQAkAAAAAAAAAAAAAACkAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFwDAAAAAA==
+    dataString: UEsDBBQAAAgIAACYn+t3MUhsVwIAAP4EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziVjOynFvbVASA8EJqSTiy/CWmMNsuSR5PA1/PeuZBu77pQL0u6+3fd2V74SLk0JqVV6qTlbKQbk+4i4M/ky6pwvcKJ7Jbf8Am3MB2c2d0HUx7xRyxXaQwczqgCrefpD7oULDtBYSZ4pXSzYHmbKWIPmjAoD6NLKOrRE03VETvg3jh3kjKfomztd8BQHoxseU5AWdC80fAhj95vEDaQF1PGVTAUtSmCOfAeL2gJhHSZRVhMRPDgRqRKCm4YVsefSq96WOWhwshmnKNIzifCaA9/ntrncsessM2AbTpqe51xjr+qk5KeqG1hQc6iJfVJRuTLR14knVSdd/eMfh96daVW8tHXDwNWwOU8Pb/ScUmN7He6b5x3x0PfnSMWB7gR85CBf1VKrSjJ0Wl05aGUgmnfXu7RZDumhs9dUB8aq7BoeDKbjNNy8+tNM8GLnG/9UG7ZC+Xb7LQCNo/mFhP2OmCYFWh2L3wbe6b6/TI3jmWtj0dWolI7eTlXahZKF75lTU9mZ0hJ0P0MJkgp73mAeO5zhwPd/1DN176ap3vja5zCAeHMXHwQD10Yd79MyuTquwOTrygouoWu1c7xio2ZKynrF+pJa2LbSGU17sH3F2d+7RWhKszikGQSw2z1Op+PgaRJPHqfRlMXZhLGI+OXjEnVSsamJNu3BsckuucRFaz8no6WmpV93pulxyS+FMl0kl5naphpArusMd+KgsQi+S7ZgHBu0BWu59AMn14QIlR6AJfdEiVe6OFlNky5LQkr+qayzJGTmvx8JuZHbH1BLAwQUAAAICAAAmJ/rsrr3I20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0UmJyYpqlYWJaqkFqUpKxhYWugYmZpZmxhZFFimWaWUqKkVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rdzFIbFcCAAD+BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rsrr3I20AAAB4AAAACQAkAAAAAAAAAAAAAACkAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFwDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -2271,7 +2271,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1290864136}
   - component: {fileID: 1290864135}
-  m_Layer: 0
+  - component: {fileID: 1290864138}
+  - component: {fileID: 1290864137}
+  m_Layer: 8
   m_Name: couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2342,6 +2344,43 @@ Transform:
   m_Father: {fileID: 1680775179}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1290864137
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290864134}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5, y: 4}
+  serializedVersion: 2
+  m_Radius: 6.5
+--- !u!50 &1290864138
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290864134}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1291124669
 GameObject:
   m_ObjectHideFlags: 0
