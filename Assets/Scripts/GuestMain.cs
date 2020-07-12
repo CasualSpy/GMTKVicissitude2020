@@ -94,10 +94,7 @@ public class GuestMain : MonoBehaviour, Plaintiff
                 GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(this, ComplaintManager.Reasons.Designated_driver_keys_taken_early));
             }
             HasKeys = false;
-        } else
-        {
-            Debug.Log("Take keys failed: isDriver = " + isDriver.ToString() + "; hasKeys = " + HasKeys.ToString());
-        }
+        } 
     }
 
     public void MakeDriver()
