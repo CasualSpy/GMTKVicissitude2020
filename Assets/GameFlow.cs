@@ -14,6 +14,8 @@ public class GameFlow : MonoBehaviour
     float GameTimer = 0f;
     TextMeshProUGUI clock;
 
+    SceneAudioManager sceneAudio;
+
     List<MonoBehaviour> objsToEnable = new List<MonoBehaviour>();
 
     public int ComplaintsTillGameOver = 10;
@@ -30,6 +32,8 @@ public class GameFlow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneAudio = GetComponent<SceneAudioManager>();
+
         objsToEnable.Add(GameObject.Find("Master").GetComponent<GuestSpawner>());
         objsToEnable.Add(GameObject.Find("Player").GetComponent<ControlsManager>());
 
@@ -55,6 +59,10 @@ public class GameFlow : MonoBehaviour
         int minutes = Mathf.FloorToInt(Mathf.Repeat(nbOfMinutesElapsed, 60));
         int hours = (int)Mathf.Repeat(Mathf.FloorToInt(nbOfMinutesElapsed / 60) + 21, 24);
 
+        //music
+        if (percentDone > 0.5f && currentState == GameState.Running && sceneAudio.currentlyPlaying == SceneAudioManager.Track.Start)
+            sceneAudio.PlayMiddleNight();
+
         clock.text = $"{hours:00}" + ":" + $"{minutes:00}";
         GuestSpawner spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
         spawner.TargetQuantity = (int)Mathf.Lerp(10 , 50 , percentDone);
@@ -66,6 +74,7 @@ public class GameFlow : MonoBehaviour
         } else if (percentDone >= 1 && currentState == GameState.Running)
         {
             currentState = GameState.GoodEnding;
+            sceneAudio.PlayGoodTrack();
             ShowGoodEnding();
         }
     }
@@ -87,6 +96,7 @@ public class GameFlow : MonoBehaviour
     /// </summary>
     void CallPolice()
     {
+        sceneAudio.PlayBadTrack();
         Instantiate(policeCar);
         currentState = GameState.Stopped;
         Invoke("ShowBadEnding", 5f);

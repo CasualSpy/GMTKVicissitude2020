@@ -12,7 +12,7 @@ public class Helpers
 
     public static float RandomRebelliousChoice(GuestMain gm)
     {
-        return 1 - Mathf.Sqrt(1 - (Random.value + gm.rebelliousness) / 2);
+        return 1 - (1 - gm.rebelliousness * Random.value);
     }
 
     public static float CalcRebellion()

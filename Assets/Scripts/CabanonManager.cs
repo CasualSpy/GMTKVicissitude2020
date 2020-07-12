@@ -22,7 +22,7 @@ public class CabanonManager : MonoBehaviour
     Couple occupants;
     float timer;
 
-    bool protectionApplied = false;
+    public bool protectionApplied = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +63,6 @@ public class CabanonManager : MonoBehaviour
         firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
         secondGuest.GetComponent<CircleCollider2D>().enabled = false;
         secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
-
         Particles.SetActive(true);
     }
 
@@ -82,7 +81,8 @@ public class CabanonManager : MonoBehaviour
         firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
         secondGuest.GetComponent<CircleCollider2D>().enabled = true;
         secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        firstGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
+        GuestMain firstMain = firstGuest.GetComponent<GuestMain>();
+        firstMain.ChangeBehavior(typeof(GBIdle));
         secondGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBIdle));
 
 
