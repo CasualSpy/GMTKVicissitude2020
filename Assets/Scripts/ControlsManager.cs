@@ -84,20 +84,34 @@ public class ControlsManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (targetGuest != null)
+            {
                 targetGuest.GetComponent<GuestMain>().ChangeBehavior(typeof(GBKicked));
+                animator.SetTrigger("Nuhuh");
+            }
         }
 
         //Interactions with objects
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (targetGuest != null)
+            {
+                animator.SetTrigger("Quick Interact");
                 targetGuest.GetComponent<GuestMain>().TakeKeys();
+            }
+
             if (targetObject != null)
             {
                 if (targetObject.name == "Jukebox")
+                {
                     GameObject.Find("Master").GetComponent<SoundLevel>().Lower();
+                    animator.SetTrigger("Quick Interact");
+                }
                 if (targetObject.name == "CondomPile")
+                {
+                    animator.SetTrigger("Quick Interact");
                     GameObject.Find("Player").GetComponent<CondomController>().HasCondom = true;
+                }
+
             }
         }
     }
@@ -142,7 +156,7 @@ public class ControlsManager : MonoBehaviour
 
         if (isGrabbing)
         {
-            spriteRenderer.flipX = (transform.position - targetGuest.transform.position).x > 0;
+            spriteRenderer.flipX = (transform.position - targetGuest.transform.position).x < 0;
         }
         else
         {
