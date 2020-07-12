@@ -17,7 +17,7 @@ public class Helpers
 
     public static float CalcRebellion()
     {
-        return 1 - Mathf.Sqrt(1 - UnityEngine.Random.value);
+        return Mathf.Log(Random.Range(1, (float)Math.E));
     }
 
     public enum SkinColor
@@ -127,12 +127,25 @@ public class Helpers
         float x;
         float y;
         int attempt = 0;
+        bool isObstacle;
+        Vector2 destination;
         do
         {
+            isObstacle = false;
             x = UnityEngine.Random.Range(center.x - bounds.extents.x, center.x + bounds.extents.x);
             y = UnityEngine.Random.Range(center.y - bounds.extents.y, center.y + bounds.extents.y);
+            destination = new Vector2(x, y);
+            Collider2D[] overlaps = Physics2D.OverlapPointAll(destination);
+            foreach (Collider2D overlap in overlaps)
+            {
+                if (overlap.gameObject.layer == 8)
+                {
+                    isObstacle = true;
+                    break;
+                }
+            }
             attempt++;
-        } while (!collider.OverlapPoint(new Vector2(x, y)) || attempt >= 100);
+        } while (isObstacle && !collider.OverlapPoint(new Vector2(x, y)) || attempt >= 100);
 
         return new Vector3(x, y, 0);
     }
