@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,8 +44,10 @@ public class SoundLevel : MonoBehaviour, Plaintiff
 
     private void FixedUpdate()
     {
-        //Debug.Log($"annoyance: {annoyance}");
-        annoyance += soundLevel * Time.fixedDeltaTime * annoyanceSpeed;
+        if (soundLevel > 0)
+            annoyance += soundLevel * Time.fixedDeltaTime * annoyanceSpeed;
+        else
+            annoyance = Math.Max(annoyance - 4 * Time.fixedDeltaTime * annoyanceSpeed, 0);
         if (annoyance <= 2f)
         {
             windowRenderer.sprite = null;
