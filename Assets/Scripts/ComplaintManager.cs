@@ -68,6 +68,11 @@ public class ComplaintManager : MonoBehaviour
                 ComplaintText.Add("Yo I got kicked for no reason!");
                 break;
             case Reasons.Unsafe_sex:
+                ComplaintText.Add("Wait…. I forgot my condom at home.");
+                ComplaintText.Add("Get out of the shed!");
+                ComplaintText.Add("Uh oh! Herpes alert!");
+                ComplaintText.Add("Perverts!");
+                ComplaintText.Add("We don’t want party babies!");
                 break;
             case Reasons.Consent:
                 break;

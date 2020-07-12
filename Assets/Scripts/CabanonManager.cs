@@ -21,6 +21,8 @@ public class CabanonManager : MonoBehaviour
     bool occupied;
     Couple occupants;
     float timer;
+
+    bool protectionApplied = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,8 @@ public class CabanonManager : MonoBehaviour
 
     void Woohoo(Couple c)
     {
+        protectionApplied = false;
+
         occupants = c;
         occupied = true;
         timer = Random.Range(10, 15);
@@ -65,6 +69,10 @@ public class CabanonManager : MonoBehaviour
 
     void StopWoohoo()
     {
+        if (!protectionApplied)
+        {
+            GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(occupants.first.gameObject.GetComponent<GuestMain>(), ComplaintManager.Reasons.Unsafe_sex));
+        }
         Particles.SetActive(false);
 
         GameObject firstGuest = occupants.first.gameObject;
