@@ -4713,6 +4713,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GuestGameObject: {fileID: 5787991864668016721, guid: e87719c89c23a8e4e8d687451d6549ed,
     type: 3}
+  MinorGameObject: {fileID: 8318557678348225570, guid: 87a6e6a16b6c8634f84fc6d955b15e66,
+    type: 3}
   TargetQuantity: 20
   Rate: 1
   minorRate: 0.1
@@ -4808,9 +4810,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.963
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

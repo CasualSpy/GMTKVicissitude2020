@@ -16,7 +16,8 @@ public class GBMinor : AbsGuestBehavior
         Ai = GetComponent<IAstarAI>();
         Ai.destination = Helpers.SpotToHangOut();
 
-        TimerIdle = Random.Range(45, 75);
+        TimerIdle = Random.Range(45, 75); //TODO swap
+        //TimerIdle = Random.Range(15, 20);
     }
 
 
@@ -35,6 +36,7 @@ public class GBMinor : AbsGuestBehavior
             {
                 GuestMain guest = gameObject.GetComponent<GuestMain>();
                 GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(guest, ComplaintManager.Reasons.Minor));
+                Destroy(gameObject);
             }
         }
         else if (Ai.reachedDestination && ChillingInPlace < 0)
