@@ -87,9 +87,4 @@ public class GBHorny : AbsGuestBehavior
         return new Vector3(x, y, 0);
     }
 
-    public override bool ShouldTakeKeys()
-    {
-
-        return GetComponent<GuestMain>().Drunkness > 0f;
-    }
 }

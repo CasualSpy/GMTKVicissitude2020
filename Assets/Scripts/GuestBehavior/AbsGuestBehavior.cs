@@ -10,7 +10,10 @@ public abstract class AbsGuestBehavior : MonoBehaviour
     protected GuestMain _guestMain;
     protected IAstarAI Ai;
 
-    public abstract bool ShouldTakeKeys();
+    public virtual bool ShouldTakeKeys()
+    {
+        return GetComponent<GuestMain>().Drunkness > 0f;
+    }
 
     public void ChangeBehavior(Type type)
     {

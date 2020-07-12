@@ -11,10 +11,13 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     private Rigidbody2D rb2d;
     private SpriteRenderer spriteRenderer;
+
+    private SpriteRenderer keySpriteRenderer;
+
     private int drunkness;
     public const int maxDrunkness = 4;
     public bool isDriver;
-    public bool hasKeys;
+    private bool hasKeys;
     public bool isMinor;
     public bool isHighlighted;
     public Sprite driverSprite;
@@ -44,6 +47,13 @@ public class GuestMain : MonoBehaviour, Plaintiff
         get;
         set;
     }
+    public bool HasKeys { get => hasKeys; set {
+            if (!keySpriteRenderer)
+                keySpriteRenderer = transform.Find("Key").GetComponent<SpriteRenderer>();
+            keySpriteRenderer.enabled = value;
+            hasKeys = value; 
+        }
+        }
 
 
     //public Transform transform;
@@ -56,6 +66,8 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     void Start()
     {
+        keySpriteRenderer = transform.Find("Key").GetComponent<SpriteRenderer>();
+
         spawner = GameObject.Find("Master").GetComponent<GuestSpawner>();
         spawner.GuestCount++;
         Ai = GetComponent<IAstarAI>();
@@ -74,21 +86,24 @@ public class GuestMain : MonoBehaviour, Plaintiff
 
     public void TakeKeys()
     {
-        if (isDriver && hasKeys)
+        if (isDriver && HasKeys)
         {
             AbsGuestBehavior gb = GetComponent<AbsGuestBehavior>();
             if (!gb.ShouldTakeKeys())
             {
-
+                GameObject.Find("Master").GetComponent<ComplaintManager>().AddComplaint(new ComplaintManager.Complaint(this, ComplaintManager.Reasons.Designated_driver_keys_taken_early));
             }
-            hasKeys = false;
+            HasKeys = false;
+        } else
+        {
+            Debug.Log("Take keys failed: isDriver = " + isDriver.ToString() + "; hasKeys = " + HasKeys.ToString());
         }
     }
 
     public void MakeDriver()
     {
         isDriver = true;
-        hasKeys = true;
+        HasKeys = true;
     }
 
     public void MakeMinor()

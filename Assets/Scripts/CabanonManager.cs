@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CabanonManager : MonoBehaviour
 {
+    GameObject Particles;
     public struct Couple
     {
         public GuestMain first;
@@ -23,6 +24,8 @@ public class CabanonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Particles = GameObject.Find("HornyParticles");
+        Particles.SetActive(false);
         queue = new Queue<Couple>();
         occupied = false;
     }
@@ -56,10 +59,14 @@ public class CabanonManager : MonoBehaviour
         firstGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
         secondGuest.GetComponent<CircleCollider2D>().enabled = false;
         secondGuest.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+        Particles.SetActive(true);
     }
 
     void StopWoohoo()
     {
+        Particles.SetActive(false);
+
         GameObject firstGuest = occupants.first.gameObject;
         GameObject secondGuest = occupants.second.gameObject;
 
