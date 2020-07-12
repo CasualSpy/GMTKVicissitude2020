@@ -24,7 +24,7 @@ public class ControlsManager : MonoBehaviour
     {
         AnimatorManage();
 
-
+        targetGuest = null;
 
 
         foreach (var item in Physics2D.OverlapCircleAll(transform.position, 0.2f))

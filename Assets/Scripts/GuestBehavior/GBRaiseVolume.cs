@@ -18,6 +18,7 @@ public class GBRaiseVolume : AbsGuestBehavior
         if (collision.transform.name == "Jukebox")
         {
             GameObject.Find("Master").GetComponent<SoundLevel>().Increase();
+            ChangeBehavior(typeof(GBIdle));
         }
     }
 
